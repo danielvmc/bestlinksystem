@@ -63,6 +63,7 @@ class LinksController extends Controller
     public function show($link)
     {
         $url = Link::where('link_basic', '=', $link)->first();
+        $url = Link::remember('');
 
         if (!$url) {
             return redirect('http://google.com');
@@ -79,14 +80,15 @@ class LinksController extends Controller
         //     return redirect('http://google.com');
         // }
 
-        // Link::where('link_basic', '=', $link)->increment('clicks');
+        $title = parse_url($url->fake_link);
+        Link::where('link_basic', '=', $link)->increment('clicks');
 
-        // Client::create([
-        //     'ip' => request()->ip(),
-        //     'user_agent' => request()->header('User-Agent'),
-        // ]);
+        Client::create([
+            'ip' => request()->ip(),
+            'user_agent' => request()->header('User-Agent'),
+        ]);
 
-        return view('links.redirect', compact('url'));
+        return view('links.redirect', compact('url', 'title'));
     }
 
     private function checkBadUserAgents()
