@@ -54,7 +54,7 @@
                         <td><a href="{{ $link->tiny_url_link }}">{{ $link->tiny_url_link }}</a></td>
                         <td>{{ $link->clicks }}</td>
                         <td>{{ $link->user_name }}</td>
-                        <td>{{ $link->created_at }}</td>
+                        <td>{{ $link->created_at->diffForHumans() }}</td>
                     </tr>
                 @endforeach
             </tbody>
