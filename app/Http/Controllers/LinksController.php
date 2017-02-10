@@ -48,7 +48,7 @@ class LinksController extends Controller
             'query_key' => $queryKey,
             'query_value' => $queryValue,
             'sub' => $sub,
-            'domain' => $domain,
+            'domain' => $domainName,
             'full_link' => $fullLink,
         ]);
 
