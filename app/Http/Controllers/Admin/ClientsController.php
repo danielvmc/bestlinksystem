@@ -9,7 +9,7 @@ class ClientsController extends Controller
 {
     public function index()
     {
-        $clients = Client::paginate(20);
+        $clients = Client::latest()->paginate(20);
 
         return view('admin.clients.index', compact('clients'));
     }
