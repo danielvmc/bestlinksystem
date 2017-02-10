@@ -14,7 +14,7 @@
                     <th>Link giả</th>
                     <th>Link bài</th>
                     <th>Link thường</th>
-                    <th>Link tinyurl</th>
+                    {{-- <th>Link tinyurl</th> --}}
                     <th>Clicks</th>
                     <th>Time</th>
                 </tr>
@@ -25,7 +25,7 @@
                         <td><a href="{{ $link->fake_link }}">{{ str_limit($link->fake_link, 20) }}</td>
                         <td><a href="{{ $link->real_link }}">{{ str_limit($link->real_link, 20) }}</td>
                         <td><a href="{{ $link->full_link }}">{{ str_limit($link->full_link,20) }}</a></td>
-                        <td><a href="{{ $link->tiny_url_link }}">{{ $link->tiny_url_link }}</a></td>
+                        {{-- <td><a href="{{ $link->tiny_url_link }}">{{ $link->tiny_url_link }}</a></td> --}}
                         <td>{{ $link->clicks }}</td>
                         <td>{{ $link->created_at->diffForHumans() }}</td>
                     </tr>

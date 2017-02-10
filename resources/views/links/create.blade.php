@@ -28,7 +28,7 @@
 
             @if (session()->has('link'))
                 <div class="form-group">
-                    Link Thường: <a href="{{ session()->get('link')->full_link }}">{{ session()->get('link')->full_link }}</a><br>
+                    Chỉ dùng link này, không chuyển thành tinyurl nữa: <a href="{{ session()->get('link')->full_link }}">{{ session()->get('link')->full_link }}</a><br>
                 </div>
             @endif
             </div>
