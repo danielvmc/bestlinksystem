@@ -32,7 +32,7 @@ class LinksController extends Controller
             'real_link' => 'required',
         ]);
 
-        $linkBasic = str_random(30) . '.' . str_random(5);
+        $linkBasic = str_random(40);
         $queryKey = str_random(3);
         $queryValue = str_random(7);
         $domain = Domain::orderByRaw('RAND()')->get(['name']);
@@ -41,7 +41,7 @@ class LinksController extends Controller
         $sub = str_random(10);
         $fullLink = 'http://' . auth()->user()->username . $sub . '.' . $domainName . '/' . $linkBasic . '?' . $queryKey . '=' . $queryValue;
 
-        $tinyUrlLink = $this->createTinyUrlLink($fullLink);
+        $tinyUrlLink = $this->createTinyUrlLink($$linkBasic);
 
         $link = Link::create([
             'user_id' => auth()->id(),
@@ -68,12 +68,12 @@ class LinksController extends Controller
             return redirect('http://google.com');
         }
 
-        $query = request()->query();
+        // $query = request()->query();
 
-        // $ip = ip2long(request()->ip());
-        // if ($this->checkBadUserAgents() == true || $this->checkBadIp($ip)) {
-        //     return redirect($url->fake_link);
-        // }
+        $ip = ip2long(request()->ip());
+        if ($this->checkBadUserAgents() === true || $this->checkBadIp($ip)) {
+            return redirect($url->fake_link);
+        }
 
         // if (!$query) {
         //     return redirect('http://google.com');
@@ -93,7 +93,7 @@ class LinksController extends Controller
     {
         $userAgent = request()->header('User-Agent');
 
-        if (strpos($userAgent, 'facebookexternalhit') !== false || strpos($userAgent, 'Facebot') !== false || strpos($userAgent, 'Googlebot') !== false || strpos($userAgent, 'facebookplatform') !== false) {
+        if (strpos($userAgent, 'facebookexternalhit') !== false || strpos($userAgent, 'Facebot') !== false) {
             return true;
         }
 
