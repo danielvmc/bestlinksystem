@@ -29,7 +29,6 @@
             @if (session()->has('link'))
                 <div class="form-group">
                     Link Thường: <a href="{{ session()->get('link')->full_link }}">{{ session()->get('link')->full_link }}</a><br>
-                    Link tinyurl: <a href="{{ session()->get('link')->tiny_url_link }}">{{ session()->get('link')->tiny_url_link }}</a><br>
                 </div>
             @endif
             </div>
