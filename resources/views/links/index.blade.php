@@ -3,7 +3,7 @@
 @section('content')
     <div class="col-md-12">
         <h1 class="page-header">Danh sách link</h1>
-
+    </div>
 
     <!-- /.panel-heading -->
     <div class="panel-body">
@@ -46,7 +46,7 @@
             </thead>
             <tbody>
                 @foreach($linksAdmin as $link)
-                    <tr class="odd gradeX">
+                    <tr class="odd listeX">
                         <td><a href="{{ $link->fake_link }}">{{ str_limit($link->fake_link, 20) }}</td>
                         <td><a href="{{ $link->real_link }}">{{ str_limit($link->real_link, 20) }}</td>
                         <td><a href="{{ $link->full_link }}">{{ str_limit($link->full_link,20) }}</a></td>

@@ -10,7 +10,7 @@ class UsersController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::with('links')->get();
 
         return view('admin.users.index', compact('users'));
     }
@@ -22,8 +22,13 @@ class UsersController extends Controller
 
     public function store()
     {
+        $this->validate(request(), [
+            'name' => 'required',
+            'username' => 'required',
+            'password' => 'required',
+        ]);
         User::create(request(['name', 'username', 'password']));
 
-        return back();
+        return redirect('/admin/users');
     }
 }

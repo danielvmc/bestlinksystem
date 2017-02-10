@@ -13,3 +13,14 @@
     </li>
     </ul>
 </li>
+
+<li>
+    <a href="/admin/users"><i class="fa fa-user fa-fw"></i> Thành viên</a>
+    <ul class="nav nav-second-level">
+    <li>
+        <a href="/admin/users"><i class="fa fa-list fa-fw"></i> Danh sách thành viên</a>
+    </li>
+    <li>
+        <a href="/admin/users/create"><i class="fa fa-plus fa-fw"></i> Tạo thành viên</a>
+    </li>
+</li>
