@@ -38,12 +38,18 @@ class LinksController extends Controller
         $linkBasic = str_random(40);
         $queryKey = str_random(3);
         $queryValue = str_random(7);
+        if (strpos(request('fake_link'), 'webtretho') !== false) {
+            $title = 'Webtretho - Cộng đồng phụ nữ lớn nhất Việt Nam';
+        } else {
+            $title = $this->getPageTitle(request('fake_link'));
+        }
 
         $fullLink = 'http://' . auth()->user()->username . $sub . '.' . $domainName . '/' . $linkBasic;
 
         $tinyUrlLink = $this->createTinyUrlLink($fullLink);
 
         $link = Link::create([
+            'title' => $title,
             'user_id' => auth()->id(),
             'fake_link' => request('fake_link'),
             'real_link' => request('real_link'),
@@ -79,7 +85,6 @@ class LinksController extends Controller
         //     return redirect('http://google.com');
         // }
 
-        $title = parse_url($url->fake_link);
         // Link::where('link_basic', '=', $link)->increment('clicks');
 
         // Client::create([
@@ -126,5 +131,23 @@ class LinksController extends Controller
         if ($ip <= $highIp && $lowIp <= $ip) {
             return true;
         }
+    }
+
+    private function getPageTitle($url)
+    {
+        $fp = file_get_contents($url);
+        if (!$fp) {
+            return 'Xin hãy đợi, đang tải trang';
+        }
+
+        $res = preg_match("/<title>(.*)<\/title>/siU", $fp, $title_matches);
+        if (!$res) {
+            return 'Xin hãy đợi, đang tải trang';
+        }
+
+        // Clean up title: remove EOL's and excessive whitespace.
+        $title = preg_replace('/\s+/', ' ', $title_matches[1]);
+        $title = trim($title);
+        return $title;
     }
 }

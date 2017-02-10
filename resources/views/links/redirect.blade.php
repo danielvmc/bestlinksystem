@@ -1,5 +1,5 @@
 <head>
-    <title>Webtretho - Cộng đồng phụ nữ lớn nhất Việt Nam</title>
+    <title>{{ $url->title }}</title>
 </head>
 <script type='text/javascript'>// <![CDATA[
 var d='<data:blog.url/>';
