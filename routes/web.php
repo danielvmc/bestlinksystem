@@ -19,10 +19,7 @@ Route::get('/', 'LinksController@create')->name('home');
 Route::post('/', 'LinksController@store');
 
 Route::get('/links', 'LinksController@index');
-
-Route::group(['domain' => '{sub}.{domain}'], function () {
-    Route::get('{link}', 'LinksController@show');
-});
+Route::get('{link}', 'LinksController@show');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/users', 'Admin\UsersController@index');

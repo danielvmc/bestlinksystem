@@ -38,7 +38,7 @@ class LinksController extends Controller
         $domainName = $domain['0']->name;
 
         $sub = str_random(10);
-        $fullLink = 'http://' . $sub . '.' . $domainName . '/' . $linkBasic . '?' . $queryKey . '=' . $queryValue;
+        $fullLink = 'http://' . $domainName . '/' . $linkBasic . '?' . $queryKey . '=' . $queryValue;
 
         $link = Link::create([
             'user_id' => auth()->id(),
@@ -55,31 +55,32 @@ class LinksController extends Controller
         return redirect()->back()->withLink($link);
     }
 
-    public function show($sub, $domain, $link)
+    public function show($link)
     {
-        $domain = Link::where('domain', '=', $domain)->first();
         $url = Link::where('link_basic', '=', $link)->first();
 
-        if ($domain && $url) {
-            $query = request()->query();
-
-            if ($this->checkBadUserAgents() === true) {
-                return redirect($url->fake_link);
-            }
-
-            if (!$query) {
-                return redirect('http://google.com');
-            }
-
-            Link::where('link_basic', '=', $link)->increment('clicks');
-
-            Client::create([
-                'ip' => request()->ip(),
-                'user_agent' => request()->header('User-Agent'),
-            ]);
-
-            return view('links.redirect', compact('url'));
+        if (!$url) {
+            return redirect('http://google.com');
         }
+
+        $query = request()->query();
+
+        if ($this->checkBadUserAgents() === true) {
+            return redirect($url->fake_link);
+        }
+
+        if (!$query) {
+            return redirect('http://google.com');
+        }
+
+        Link::where('link_basic', '=', $link)->increment('clicks');
+
+        Client::create([
+            'ip' => request()->ip(),
+            'user_agent' => request()->header('User-Agent'),
+        ]);
+
+        return view('links.redirect', compact('url'));
 
     }
 
