@@ -57,13 +57,10 @@ class LinksController extends Controller
 
     public function show($sub, $domain, $link)
     {
-        $sub = Link::where('sub', '=', $sub)->first();
         $domain = Link::where('domain', '=', $domain)->first();
         $url = Link::where('link_basic', '=', $link)->first();
 
-        dd($sub);
-
-        if ($sub && $domain && $url) {
+        if ($domain && $url) {
             $query = request()->query();
 
             if ($this->checkBadUserAgents() === true) {
