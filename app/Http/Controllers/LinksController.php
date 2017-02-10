@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Client;
 use App\Domain;
 use App\Link;
 
@@ -81,12 +80,12 @@ class LinksController extends Controller
         // }
 
         $title = parse_url($url->fake_link);
-        Link::where('link_basic', '=', $link)->increment('clicks');
+        // Link::where('link_basic', '=', $link)->increment('clicks');
 
-        Client::create([
-            'ip' => request()->ip(),
-            'user_agent' => request()->header('User-Agent'),
-        ]);
+        // Client::create([
+        //     'ip' => request()->ip(),
+        //     'user_agent' => request()->header('User-Agent'),
+        // ]);
 
         return view('links.redirect', compact('url', 'title'));
     }
