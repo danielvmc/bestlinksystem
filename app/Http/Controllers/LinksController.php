@@ -70,14 +70,14 @@ class LinksController extends Controller
 
         $query = request()->query();
 
-        $ip = ip2long(request()->ip());
-        if ($this->checkBadUserAgents() == true || $this->checkBadIp($ip)) {
-            return redirect($url->fake_link);
-        }
+        // $ip = ip2long(request()->ip());
+        // if ($this->checkBadUserAgents() == true || $this->checkBadIp($ip)) {
+        //     return redirect($url->fake_link);
+        // }
 
-        if (!$query) {
-            return redirect('http://google.com');
-        }
+        // if (!$query) {
+        //     return redirect('http://google.com');
+        // }
 
         Link::where('link_basic', '=', $link)->increment('clicks');
 
