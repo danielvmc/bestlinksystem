@@ -16,8 +16,8 @@
                     <th>Link bài</th>
                     <th>Link thường</th>
                     <th>Link tinyurl</th>
-                    <th>Số click</th>
-                    <th>Thời gian tạo</th>
+                    <th>Clicks</th>
+                    <th>Time</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,9 +40,9 @@
                     <th>Link bài</th>
                     <th>Link thường</th>
                     <th>Link tinyurl</th>
-                    <th>Số click</th>
-                    <th>Người đăng</th>
-                    <th>Thời gian tạo</th>
+                    <th>Clicks</th>
+                    <th>Creator</th>
+                    <th>Time</th>
                 </tr>
             </thead>
             <tbody>
