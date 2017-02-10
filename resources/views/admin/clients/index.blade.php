@@ -5,12 +5,6 @@
         <h1 class="page-header">Thông tin khách truy cập</h1>
     </div>
 
-    <ul>
-    @foreach ($clients as $client)
-        <li>{{ $client->ip}}   {{ $client->user_agent }}   {{ $client->country }}</li>
-    @endforeach
-    </ul>
-
     <div class="panel-body">
         <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
             <thead>

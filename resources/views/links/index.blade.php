@@ -28,7 +28,7 @@
                         <td><a href="{{ $link->full_link }}">{{ str_limit($link->full_link,30) }}</a></td>
                         <td><a href="{{ $link->tiny_url_link }}">{{ $link->tiny_url_link }}</a></td>
                         <td>{{ $link->clicks }}</td>
-                        <td>{{ $link->created_at }}</td>
+                        <td>{{ $link->created_at->diffForHumans() }}</td>
                     </tr>
                 @endforeach
             </tbody>
