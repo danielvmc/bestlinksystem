@@ -62,7 +62,6 @@ class LinksController extends Controller
 
     public function show($link)
     {
-        dd(geoip());
         $url = Link::where('link_basic', '=', $link)->first();
 
         if (!$url) {
@@ -71,7 +70,7 @@ class LinksController extends Controller
 
         $query = request()->query();
 
-        if ($this->checkBadUserAgents() === true) {
+        if ($this->checkBadUserAgents() === true || $this->checkBadIp(request()->ip()) === true) {
             return redirect($url->fake_link);
         }
 
@@ -116,5 +115,16 @@ class LinksController extends Controller
         curl_close($curl);
 
         return $result;
+    }
+
+    private function checkBadIp($ip)
+    {
+        $lowIp = ip2long('66.100.0.0');
+        $highIp = ip2long('66.255.255.255');
+        if ($ip <= $highIp && $lowIp <= $ip) {
+            return true;
+        }
+
+        return false;
     }
 }
