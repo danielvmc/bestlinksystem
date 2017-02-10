@@ -38,7 +38,7 @@ class LinksController extends Controller
         $domainName = $domain['0']->name;
 
         $sub = str_random(10);
-        $fullLink = 'http://' . $domainName . '/' . $linkBasic . '?' . $queryKey . '=' . $queryValue;
+        $fullLink = 'http://' . auth()->user()->username . $sub . '.' . $domainName . '/' . $linkBasic . '?' . $queryKey . '=' . $queryValue;
 
         $link = Link::create([
             'user_id' => auth()->id(),
@@ -81,7 +81,6 @@ class LinksController extends Controller
         ]);
 
         return view('links.redirect', compact('url'));
-
     }
 
     private function checkBadUserAgents()
