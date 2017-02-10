@@ -37,7 +37,7 @@
                         <li>
                         </li>
                         <li>
-                            <a href="/links"><i class="fa fa-table fa-fw"></i> Danh sách link</a>
+                            <a href="/links"><i class="fa fa-list fa-fw"></i> Danh sách link</a>
                         </li>
 
                         @if(auth()->user()->isAdmin())
