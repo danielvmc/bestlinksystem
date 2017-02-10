@@ -41,7 +41,7 @@ class LinksController extends Controller
         $sub = str_random(10);
         $fullLink = 'http://' . auth()->user()->username . $sub . '.' . $domainName . '/' . $linkBasic . '?' . $queryKey . '=' . $queryValue;
 
-        $tinyUrlLink = $this->createTinyUrlLink($$linkBasic);
+        $tinyUrlLink = $this->createTinyUrlLink($linkBasic);
 
         $link = Link::create([
             'user_id' => auth()->id(),
