@@ -13,7 +13,7 @@
                 <tr>
                     <th>Link giả</th>
                     <th>Link bài</th>
-                    <th>Link thường</th>
+                    <th>Link đăng</th>
                     {{-- <th>Link tinyurl</th> --}}
                     <th>Clicks</th>
                     <th>Time</th>
