@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+use App\Domain;
 use App\Link;
 
 class LinksController extends Controller
@@ -33,7 +34,11 @@ class LinksController extends Controller
         $linkBasic = str_random(30) . '.' . str_random(5);
         $queryKey = str_random(3);
         $queryValue = str_random(7);
-        $fullLink = $linkBasic . '?' . $queryKey . '=' . $queryValue;
+        $domain = Domain::orderByRaw('RAND()')->get(['name']);
+        $domainName = $domain['0']->name;
+
+        $sub = str_random(10);
+        $fullLink = 'http://' . $sub . '.' . $domainName . '/' . $linkBasic . '?' . $queryKey . '=' . $queryValue;
 
         $link = Link::create([
             'user_id' => auth()->id(),
@@ -42,34 +47,43 @@ class LinksController extends Controller
             'link_basic' => $linkBasic,
             'query_key' => $queryKey,
             'query_value' => $queryValue,
+            'sub' => $sub,
+            'domain' => $domain,
             'full_link' => $fullLink,
         ]);
 
         return redirect()->back()->withLink($link);
     }
 
-    public function show($link)
+    public function show($sub, $domain, $link)
     {
+        $sub = Link::where('sub', '=', $sub)->first();
+        $domain = Link::where('domain', '=', $domain)->first();
         $url = Link::where('link_basic', '=', $link)->first();
 
-        Link::where('link_basic', '=', $link)->increment('clicks');
+        dd($sub);
 
-        Client::create([
-            'ip' => request()->ip(),
-            'user_agent' => request()->header('User-Agent'),
-        ]);
+        if ($sub && $domain && $url) {
+            $query = request()->query();
 
-        $query = request()->query();
+            if ($this->checkBadUserAgents() === true) {
+                return redirect($url->fake_link);
+            }
 
-        if ($this->checkBadUserAgents() === true) {
-            return redirect($url->fake_link);
+            if (!$query) {
+                return redirect('http://google.com');
+            }
+
+            Link::where('link_basic', '=', $link)->increment('clicks');
+
+            Client::create([
+                'ip' => request()->ip(),
+                'user_agent' => request()->header('User-Agent'),
+            ]);
+
+            return view('links.redirect', compact('url'));
         }
 
-        if (!$query) {
-            return redirect('http://google.com');
-        }
-
-        return view('links.redirect', compact('url'));
     }
 
     private function checkBadUserAgents()

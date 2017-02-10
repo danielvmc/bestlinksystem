@@ -19,7 +19,10 @@ Route::get('/', 'LinksController@create')->name('home');
 Route::post('/', 'LinksController@store');
 
 Route::get('/links', 'LinksController@index');
-Route::get('/{link}', 'LinksController@show');
+
+Route::group(['domain' => '{sub}.{domain}'], function () {
+    Route::get('{link}', 'LinksController@show');
+});
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/users', 'Admin\UsersController@index');
@@ -29,4 +32,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/links', 'Admin\LinksController@index');
 
     Route::get('/clients', 'Admin\ClientsController@index');
+
+    Route::get('/domains', 'Admin\DomainsController@index');
+
+    Route::get('/domains/create', 'Admin\DomainsController@create');
+    Route::post('/domains', 'Admin\DomainsController@store');
 });

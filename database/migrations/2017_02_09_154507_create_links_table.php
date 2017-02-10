@@ -25,6 +25,8 @@ class CreateLinksTable extends Migration
             $table->string('link_basic');
             $table->string('query_key');
             $table->string('query_value');
+            $table->string('sub');
+            $table->string('domain');
             $table->string('full_link');
             $table->timestamps();
         });
