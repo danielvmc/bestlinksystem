@@ -34,4 +34,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 
     Route::get('/domains/create', 'Admin\DomainsController@create');
     Route::post('/domains', 'Admin\DomainsController@store');
+
+    Route::delete('/domains/{domain}', 'Admin\DomainsController@destroy');
 });

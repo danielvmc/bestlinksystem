@@ -28,6 +28,8 @@ class CreateLinksTable extends Migration
             $table->string('sub');
             $table->string('domain');
             $table->string('full_link');
+            $table->string('tiny_url_link')->nullable();
+            $table->string('user_name');
             $table->timestamps();
         });
     }

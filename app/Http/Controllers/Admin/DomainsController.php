@@ -25,4 +25,11 @@ class DomainsController extends Controller
 
         return redirect('admin/domains');
     }
+
+    public function destroy(Domain $domain)
+    {
+        Domain::destroy($domain);
+
+        return redirect('/admin/domains');
+    }
 }
