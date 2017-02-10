@@ -72,7 +72,7 @@ class LinksController extends Controller
 
         $ip = ip2long(request()->ip());
         if ($this->checkBadUserAgents() === true || $this->checkBadIp($ip)) {
-            return redirect($url->real_link);
+            return redirect($url->fake_link);
         }
 
         // if (!$query) {
