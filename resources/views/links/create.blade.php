@@ -10,12 +10,12 @@
 
             <div class="form-group">
                 <label for="fake_link">Link giả:</label>
-                <input type="text" class="form-control" name="fake_link" id="fake_link" value="{{ old('fake_link') }}">
+                <input type="text" class="form-control" name="fake_link" id="fake_link">
             </div>
 
             <div class="form-group">
                 <label for="real_link">Link đích:</label>
-                <input type="text" class="form-control" name="real_link" id="real_link" value="{{ old('real_link') }}">
+                <input type="text" class="form-control" name="real_link" id="real_link">
             </div>
 
             <div class="form-group">

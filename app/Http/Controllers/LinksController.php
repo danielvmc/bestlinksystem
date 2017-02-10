@@ -57,7 +57,7 @@ class LinksController extends Controller
             'user_name' => auth()->user()->name,
         ]);
 
-        return redirect()->back()->withLink($link);
+        return redirect('links');
     }
 
     public function show($link)
