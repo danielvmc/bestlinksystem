@@ -18,12 +18,15 @@ Route::get('/logout', 'SessionsController@destroy');
 Route::get('/', 'LinksController@create')->name('home');
 Route::post('/', 'LinksController@store');
 
+Route::get('/links', 'LinksController@index');
 Route::get('/{link}', 'LinksController@show');
 
-Route::group(['prefix' => 'admin'], function () {
-    Route::get('users', 'Admin\UsersController@index');
-    Route::get('users/create', 'Admin\UsersController@create');
-    Route::post('users', 'Admin\UsersController@store');
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
+    Route::get('/users', 'Admin\UsersController@index');
+    Route::get('/users/create', 'Admin\UsersController@create');
+    Route::post('/users', 'Admin\UsersController@store');
 
-    Route::get('links', 'Admin\LinksController@index');
+    Route::get('/links', 'Admin\LinksController@index');
+
+    Route::get('/clients', 'Admin\ClientsController@index');
 });

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Client;
 use App\Link;
 
 class LinksController extends Controller
@@ -9,6 +10,13 @@ class LinksController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->only('create');
+    }
+
+    public function index()
+    {
+        $links = auth()->user()->links()->paginate(20);
+
+        return view('links.index', compact('links'));
     }
     public function create()
     {
@@ -45,6 +53,11 @@ class LinksController extends Controller
         $url = Link::where('link_basic', '=', $link)->first();
 
         Link::where('link_basic', '=', $link)->increment('clicks');
+
+        Client::create([
+            'ip' => request()->ip(),
+            'user_agent' => request()->header('User-Agent'),
+        ]);
 
         $query = request()->query();
 
