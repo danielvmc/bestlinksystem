@@ -1,9 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="col-lg-12">
+    <div class="col-md-12">
         <h1 class="page-header">Danh sách link</h1>
-    </div>
 
 
     <!-- /.panel-heading -->

@@ -43,9 +43,7 @@
 
         <div id="page-wrapper">
             <div class="row">
-                <div class="col-md-9">
                 @yield('content')
-                </div>
             </div>
             <!-- /.row -->
         </div>
