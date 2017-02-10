@@ -40,7 +40,7 @@ class LinksController extends Controller
         $queryKey = str_random(3);
         $queryValue = str_random(7);
 
-        $fullLink = 'http://' . auth()->user()->username . $sub . '.' . $domainName . '/' . str_random(40);
+        $fullLink = 'http://' . auth()->user()->username . $sub . '.' . $domainName . '/' . $linkBasic;
 
         $tinyUrlLink = $this->createTinyUrlLink($fullLink);
 
