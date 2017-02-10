@@ -36,13 +36,13 @@ class LinksController extends Controller
         $domainName = $domain['0']->name;
 
         $sub = str_random(10);
-        $linkBasic = 'http://' . auth()->user()->username . $sub . '.' . $domainName . '/' . str_random(40);
+        $linkBasic = str_random(40);
         $queryKey = str_random(3);
         $queryValue = str_random(7);
 
-        $fullLink = 'http://' . auth()->user()->username . $sub . '.' . $domainName . '/' . $linkBasic . '?' . $queryKey . '=' . $queryValue;
+        $fullLink = 'http://' . auth()->user()->username . $sub . '.' . $domainName . '/' . str_random(40);
 
-        $tinyUrlLink = $this->createTinyUrlLink($linkBasic);
+        $tinyUrlLink = $this->createTinyUrlLink($fullLink);
 
         $link = Link::create([
             'user_id' => auth()->id(),

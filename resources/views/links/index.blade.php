@@ -24,7 +24,7 @@
                     <tr class="odd gradeX">
                         <td><a href="{{ $link->fake_link }}">{{ str_limit($link->fake_link, 20) }}</td>
                         <td><a href="{{ $link->real_link }}">{{ str_limit($link->real_link, 20) }}</td>
-                        <td><a href="{{ $link->link_basic }}">{{ str_limit($link->link_basic,20) }}</a></td>
+                        <td><a href="{{ $link->full_link }}">{{ str_limit($link->full_link,20) }}</a></td>
                         <td><a href="{{ $link->tiny_url_link }}">{{ $link->tiny_url_link }}</a></td>
                         <td>{{ $link->clicks }}</td>
                         <td>{{ $link->created_at->diffForHumans() }}</td>
@@ -49,7 +49,7 @@
                     <tr class="odd listeX">
                         <td><a href="{{ $link->fake_link }}">{{ str_limit($link->fake_link, 20) }}</td>
                         <td><a href="{{ $link->real_link }}">{{ str_limit($link->real_link, 20) }}</td>
-                        <td><a href="{{ $link->full_basic }}">{{ str_limit($link->basic,20) }}</a></td>
+                        <td><a href="{{ $link->full_link }}">{{ str_limit($link->full_link, 20) }}</a></td>
                         <td><a href="{{ $link->tiny_url_link }}">{{ $link->tiny_url_link }}</a></td>
                         <td>{{ $link->clicks }}</td>
                         <td>{{ $link->user_name }}</td>
