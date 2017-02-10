@@ -79,7 +79,7 @@ class LinksController extends Controller
         //     return redirect('http://google.com');
         // }
 
-        Link::where('link_basic', '=', $link)->increment('clicks');
+        // Link::where('link_basic', '=', $link)->increment('clicks');
 
         // Client::create([
         //     'ip' => request()->ip(),
