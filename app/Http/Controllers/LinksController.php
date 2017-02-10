@@ -70,8 +70,8 @@ class LinksController extends Controller
 
         $query = request()->query();
 
-        dd(request()->ip());
-        if ($this->checkBadUserAgents() === true || $this->checkBadIp(request()->ip()) === true) {
+        $ip = request()->ip();
+        if ($this->checkBadUserAgents() == true || $this->checkBadIp($ip)) {
             return redirect($url->fake_link);
         }
 
@@ -125,7 +125,5 @@ class LinksController extends Controller
         if ($ip <= $highIp && $lowIp <= $ip) {
             return true;
         }
-
-        return false;
     }
 }
