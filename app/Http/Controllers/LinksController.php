@@ -87,7 +87,7 @@ class LinksController extends Controller
     {
         $userAgent = request()->header('User-Agent');
 
-        if ($userAgent === 'facebookexternalhit' || $userAgent === 'Facebot' || $userAgent === 'Googlebot') {
+        if (strpos(userAgent, 'facebookexternalhit') !== false || strpos(userAgent, 'Facebot') !== false || strpos(userAgent, 'Googlebot') !== false) {
             return true;
         }
 
