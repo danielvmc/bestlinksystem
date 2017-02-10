@@ -63,7 +63,6 @@ class LinksController extends Controller
     public function show($link)
     {
         $url = Link::where('link_basic', '=', $link)->first();
-        $url = Link::remember('');
 
         if (!$url) {
             return redirect('http://google.com');
