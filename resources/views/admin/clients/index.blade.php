@@ -12,6 +12,7 @@
                     <th>IP</th>
                     <th>User Agent</th>
                     <th>Country</th>
+                    <th>Time</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,6 +21,7 @@
                         <td>{{ $client->ip }}</td>
                         <td>{{ $client->user_agent }}</td>
                         <td>{{ $client->country }}</td>
+                        <td>{{ $client->created_at->diffForHumans() }}</td>
                     </tr>
                 @endforeach
             </tbody>

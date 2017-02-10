@@ -62,6 +62,7 @@ class LinksController extends Controller
 
     public function show($link)
     {
+        dd(geoip());
         $url = Link::where('link_basic', '=', $link)->first();
 
         if (!$url) {
