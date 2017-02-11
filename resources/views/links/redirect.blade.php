@@ -1,5 +1,5 @@
 <head>
-    @if($url->title === '')
+    @if(!$url->title)
         <title>Webtretho - Cộng đồng phụ nữ lớn nhất Việt Nam</title>
     @else
         <title>{{ $url->title }}</title>
