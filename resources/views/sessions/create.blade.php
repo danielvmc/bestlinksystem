@@ -54,8 +54,17 @@
                                 <!-- Change this to a button or input when using this as a form -->
                                 <button type="submit" class="btn btn-lg btn-success btn-block">Đăng nhập</button>
                             </fieldset>
+
+
+
                         </form>
 
+@if (session()->has('flash_notification.message'))
+<br>
+    <div id="flash-message" class="alert alert-{{ session('flash_notification.level') }}">
+        {!! session('flash_notification.message') !!}
+    </div>
+@endif
 
                     </div>
                 </div>

@@ -40,6 +40,14 @@
                             <a href="/links"><i class="fa fa-list fa-fw"></i> Danh sách link</a>
                         </li>
 
+                        <li>
+                            <a href="/reports"><i class="fa fa-flag fa-fw"></i> Báo cáo link xấu</a>
+                        </li>
+
+                        <li>
+                            <a href="/setting"><i class="fa fa-key fa-fw"></i> Đổi mật khẩu</a>
+                        </li>
+
                         @if(auth()->user()->isAdmin())
                             @include('layouts.admin-nav')
                         @endif

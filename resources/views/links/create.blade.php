@@ -5,7 +5,7 @@
         <h1 class="page-header">Tạo link</h1>
     </div>
     <div class="panel-body">
-        <form method="POST" action="">
+        <form method="POST" action="/">
             {{ csrf_field() }}
 
             <div class="form-group">

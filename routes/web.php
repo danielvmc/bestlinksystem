@@ -18,6 +18,12 @@ Route::get('/logout', 'SessionsController@destroy');
 Route::get('/', 'LinksController@create')->name('home');
 Route::post('/', 'LinksController@store');
 
+Route::get('/reports', 'ReportsController@index');
+Route::post('/reports', 'ReportsController@store');
+
+Route::get('/setting', 'UsersController@index');
+Route::post('/setting', 'UsersController@update');
+
 Route::get('/links', 'LinksController@index');
 Route::get('{link}', 'LinksController@show');
 

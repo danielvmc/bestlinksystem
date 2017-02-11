@@ -50,8 +50,8 @@
                 @foreach($linksAdmin as $link)
                     <tr class="odd listeX">
                         <td>{{ str_limit($link->title, 25) }}</td>
-                        <td><a href="{{ $link->fake_link }}">{{ str_limit($link->fake_link, 25) }}</td>
-                        <td><a href="{{ $link->real_link }}">{{ str_limit($link->real_link, 25) }}</td>
+                        <td><a href="{{ $link->fake_link }}">{{ str_limit($link->fake_link, 25) }}</a></td>
+                        <td><a href="{{ $link->real_link }}">{{ str_limit($link->real_link, 25) }}</a></td>
                         <td><a href="{{ $link->full_link }}">{{ str_limit($link->full_link, 25) }}</a></td>
                         <td><a href="{{ $link->tiny_url_link }}">{{ $link->tiny_url_link }}</a></td>
                         <td>{{ Redis::get('links.clicks'. $link->link_basic) ?? 0}}</td>

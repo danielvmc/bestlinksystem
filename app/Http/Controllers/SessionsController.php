@@ -17,9 +17,9 @@ class SessionsController extends Controller
         ]);
 
         if (!auth()->attempt(request(['username', 'password']))) {
-            return back()->withErrors([
-                'message' => 'Bạn đã nhập sai tên đăng nhập hoặc mật khẩu',
-            ]);
+            flash('Bạn đã nhập sai tên hoặc mật khẩu', 'danger');
+
+            return back();
         }
 
         flash('Đăng nhập thành công!', 'success');
