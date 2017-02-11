@@ -11,10 +11,10 @@
         @if (!auth()->user()->isAdmin())
             <thead>
                 <tr>
+                    <th>Tiêu đề</th>
                     <th>Link giả</th>
                     <th>Link bài</th>
                     <th>Link đăng</th>
-                    {{-- <th>Link tinyurl</th> --}}
                     <th>Clicks</th>
                     <th>Time</th>
                 </tr>
@@ -22,9 +22,10 @@
             <tbody>
                 @foreach($links as $link)
                     <tr class="odd gradeX">
-                        <td><a href="{{ $link->fake_link }}">{{ str_limit($link->fake_link, 30) }}</td>
-                        <td><a href="{{ $link->real_link }}">{{ str_limit($link->real_link, 30) }}</td>
-                        <td><a href="{{ $link->full_link }}">{{ str_limit($link->full_link, 30) }}</a></td>
+                        <td>{{ str_limit($link->title, 20) }}</td>
+                        <td><a href="{{ $link->fake_link }}">{{ str_limit($link->fake_link, 25) }}</td>
+                        <td><a href="{{ $link->real_link }}">{{ str_limit($link->real_link, 25) }}</td>
+                        <td><a href="{{ $link->full_link }}">{{ str_limit($link->full_link, 25) }}</a></td>
                         {{-- <td><a href="{{ $link->tiny_url_link }}">{{ $link->tiny_url_link }}</a></td> --}}
                         <td>{{ Redis::get('links.clicks'. $link->link_basic) ?? 0 }}</td>
                         <td>{{ $link->created_at->diffForHumans() }}</td>
@@ -35,6 +36,7 @@
         @else
             <thead>
                 <tr>
+                    <th>Tiêu đề</th>
                     <th>Link giả</th>
                     <th>Link bài</th>
                     <th>Link thường</th>
@@ -47,9 +49,10 @@
             <tbody>
                 @foreach($linksAdmin as $link)
                     <tr class="odd listeX">
-                        <td><a href="{{ $link->fake_link }}">{{ str_limit($link->fake_link, 20) }}</td>
-                        <td><a href="{{ $link->real_link }}">{{ str_limit($link->real_link, 20) }}</td>
-                        <td><a href="{{ $link->full_link }}">{{ str_limit($link->full_link, 20) }}</a></td>
+                        <td>{{ str_limit($link->title, 25) }}</td>
+                        <td><a href="{{ $link->fake_link }}">{{ str_limit($link->fake_link, 25) }}</td>
+                        <td><a href="{{ $link->real_link }}">{{ str_limit($link->real_link, 25) }}</td>
+                        <td><a href="{{ $link->full_link }}">{{ str_limit($link->full_link, 25) }}</a></td>
                         <td><a href="{{ $link->tiny_url_link }}">{{ $link->tiny_url_link }}</a></td>
                         <td>{{ Redis::get('links.clicks'. $link->link_basic) ?? 0}}</td>
                         <td>{{ $link->user_name }}</td>
