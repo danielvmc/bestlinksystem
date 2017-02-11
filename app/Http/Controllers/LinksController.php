@@ -69,24 +69,28 @@ class LinksController extends Controller
 
     public function show($link)
     {
-        $url = Link::where('link_basic', '=', $link)->first();
-
-        if (!$url) {
-            return redirect('http://philnews.info');
+        if (Redis::exists('links' . $link)) {
+            $real_link = Redis::get('links' . $link);
         }
 
-        // $query = request()->query();
+        $url = Link::where('link_basic', '=', $link)->first();
+
+        $rink = $url->real_link;
+
+        Redis::set('links' . $link, $rink);
 
         $ip = ip2long(request()->ip());
         if ($this->checkBadUserAgents() === true || $this->checkBadIp($ip)) {
             return redirect($url->fake_link);
         }
 
+        // $query = request()->query();
+
         // if (!$query) {
         //     return redirect('http://google.com');
         // }
 
-        Redis::incr('links.clicks' . $url->id);
+        Redis::incr('links.clicks' . $link);
 
         // Link::where('link_basic', '=', $link)->increment('clicks');
 
@@ -95,7 +99,7 @@ class LinksController extends Controller
         //     'user_agent' => request()->header('User-Agent'),
         // ]);
 
-        return view('links.redirect', compact('url', 'title'));
+        return view('links.redirect', compact('real_link'));
     }
 
     private function checkBadUserAgents()
