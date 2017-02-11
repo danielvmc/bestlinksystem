@@ -9,7 +9,7 @@ class LinksController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->only('create');
+        $this->middleware('auth')->only('create', 'index');
     }
 
     public function index()
