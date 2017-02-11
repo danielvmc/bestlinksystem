@@ -26,7 +26,7 @@
                         <td><a href="{{ $link->real_link }}">{{ str_limit($link->real_link, 30) }}</td>
                         <td><a href="{{ $link->full_link }}">{{ str_limit($link->full_link, 30) }}</a></td>
                         {{-- <td><a href="{{ $link->tiny_url_link }}">{{ $link->tiny_url_link }}</a></td> --}}
-                        <td>{{ Redis::get('links.click'. $link->id) }}</td>
+                        <td>{{ Redis::get('links.clicks'. $link->id) }}</td>
                         <td>{{ $link->created_at->diffForHumans() }}</td>
                     </tr>
                 @endforeach
