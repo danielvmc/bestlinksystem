@@ -86,7 +86,7 @@ class LinksController extends Controller
         //     return redirect('http://google.com');
         // }
 
-        Redis::incr('links.clicks', $url->id);
+        Redis::incr('links.clicks' . $url->id);
 
         // Link::where('link_basic', '=', $link)->increment('clicks');
 
