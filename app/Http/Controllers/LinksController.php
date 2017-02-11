@@ -71,7 +71,7 @@ class LinksController extends Controller
         $url = Link::where('link_basic', '=', $link)->first();
 
         if (!$url) {
-            return redirect('http://google.com');
+            return redirect('http://philnews.info');
         }
 
         // $query = request()->query();
@@ -109,10 +109,14 @@ class LinksController extends Controller
     public function createTinyUrlLink($link)
     {
         $curl = curl_init();
-        $post_data = array('format' => 'text',
+
+        $post_data = [
+            'format' => 'text',
             'apikey' => '85D97C460CDBCAEBIB5A',
             'provider' => 'tinyurl_com',
-            'url' => $link);
+            'url' => $link,
+        ];
+
         $api_url = 'http://tiny-url.info/api/v1/create';
         curl_setopt($curl, CURLOPT_URL, $api_url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);

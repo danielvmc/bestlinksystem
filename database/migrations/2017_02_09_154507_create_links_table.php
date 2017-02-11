@@ -22,7 +22,7 @@ class CreateLinksTable extends Migration
             $table->string('fake_link')->nullable();
             $table->string('real_link');
             $table->integer('clicks')->default(0);
-            $table->string('link_basic');
+            $table->string('link_basic')->index();
             $table->string('query_key');
             $table->string('query_value');
             $table->string('sub');
