@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Domain;
 use App\Link;
+use Illuminate\Support\Facades\Redis;
 
 class LinksController extends Controller
 {
@@ -17,7 +18,7 @@ class LinksController extends Controller
         $links = auth()->user()->links()->latest()->paginate(20);
         $linksAdmin = Link::latest()->paginate(20);
 
-        return view('links.index', compact('links', 'linksAdmin'));
+        return view('links.index', compact('links', 'linksAdmin', 'clicks'));
     }
     public function create()
     {
@@ -84,6 +85,8 @@ class LinksController extends Controller
         // if (!$query) {
         //     return redirect('http://google.com');
         // }
+
+        Redis::incre('links.clicks', $url->id);
 
         // Link::where('link_basic', '=', $link)->increment('clicks');
 
