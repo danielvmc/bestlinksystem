@@ -1,7 +1,6 @@
 #flash-message {
     position: relative;
-    bottom: 20px;
-    right: 20px;
+    top: 100px;
     z-index: 10;
     float: right;
 }
