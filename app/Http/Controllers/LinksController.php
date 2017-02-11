@@ -71,7 +71,7 @@ class LinksController extends Controller
     {
         if (Redis::exists('links' . $link)) {
             $realLink = Redis::get('links' . $link);
-            $title = Redis::get('links' . $link . title);
+            $title = Redis::get('links' . $link . 'title');
         }
 
         $url = Link::where('link_basic', '=', $link)->first();
