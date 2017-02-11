@@ -5,8 +5,6 @@
         <title>{{ $title }}</title>
     @endif
 </head>
-<script type='text/javascript'>// <![CDATA[
-var d='<data:blog.url/>';
-d=d.replace(/.*\/\/[^\/]*/, '');
-location.href = '{{ $realLink }}';
-// ]]></script>
+<script>
+window.location = '{{ $realLink }}';
+</script>
