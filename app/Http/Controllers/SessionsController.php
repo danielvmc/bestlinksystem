@@ -22,6 +22,8 @@ class SessionsController extends Controller
             ]);
         }
 
+        flash('Đăng nhập thành công!', 'success');
+
         return redirect()->home();
     }
 

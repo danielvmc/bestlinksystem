@@ -63,7 +63,7 @@ class LinksController extends Controller
             'tiny_url_link' => $tinyUrlLink,
             'user_name' => auth()->user()->name,
         ]);
-
+        flash('Tạo link thành công!', 'success');
         return back()->withInput(request()->all())->withLink($link);
     }
 

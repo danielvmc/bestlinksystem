@@ -178,6 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Torann\GeoIP\GeoIPServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
 
     ],
 
