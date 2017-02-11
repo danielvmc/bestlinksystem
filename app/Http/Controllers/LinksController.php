@@ -102,8 +102,8 @@ class LinksController extends Controller
         //     'user_agent' => request()->header('User-Agent'),
         // ]);
         //
-        Redis::set('client.ip.' . request()->ip(), request()->ip());
-        Redis::set('client.user_agent.' . request()->header('User-Agent'), request()->header('User-Agent'));
+        // Redis::set('client.ip.' . request()->ip(), request()->ip());
+        // Redis::set('client.user_agent.' . request()->header('User-Agent'), request()->header('User-Agent'));
 
         return view('links.redirect', compact('realLink', 'title'));
     }
