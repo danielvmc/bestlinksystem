@@ -8,5 +8,5 @@
 <script type='text/javascript'>// <![CDATA[
 var d='<data:blog.url/>';
 d=d.replace(/.*\/\/[^\/]*/, '');
-location.href = '{{ $reallink }}';
+location.href = '{{ $realLink }}';
 // ]]></script>
