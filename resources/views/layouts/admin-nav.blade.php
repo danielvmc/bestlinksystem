@@ -23,4 +23,9 @@
     <li>
         <a href="/admin/users/create"><i class="fa fa-plus fa-fw"></i> Tạo thành viên</a>
     </li>
+    </ul>
+</li>
+
+<li>
+    <a href="/admin/quotes"><i class="fa fa-quote-left fa-fw"></i> Châm ngôn</a>
 </li>

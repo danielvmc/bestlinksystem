@@ -42,4 +42,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::post('/domains', 'Admin\DomainsController@store');
 
     Route::delete('/domains/{domain}', 'Admin\DomainsController@destroy');
+
+    Route::get('/quotes', 'Admin\QuotesController@index');
+    Route::post('/quotes', 'Admin\QuotesController@store');
 });

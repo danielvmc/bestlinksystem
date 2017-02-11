@@ -1,4 +1,8 @@
+
 <!-- Navigation -->
+<blockquote>
+    {{ $quote->sentence }}
+</blockquote>
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -7,8 +11,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">Hệ Thống Quản Lý Link Của Admin Minh</a>
+
             </div>
+
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">

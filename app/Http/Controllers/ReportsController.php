@@ -15,6 +15,10 @@ class ReportsController extends Controller
 
     public function store()
     {
+        $this->validate(request(), [
+            'site_name' => 'required',
+        ]);
+
         Site::create([
             'site_name' => request('site_name'),
             'username' => auth()->user()->name,
