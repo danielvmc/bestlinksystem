@@ -71,13 +71,16 @@ class LinksController extends Controller
     {
         if (Redis::exists('links' . $link)) {
             $real_link = Redis::get('links' . $link);
+            $title = Redis::get('links' . $links . title);
         }
 
         $url = Link::where('link_basic', '=', $link)->first();
 
-        $rink = $url->real_link;
+        $realLink = $url->real_link;
+        $title = $url->title;
 
-        Redis::set('links' . $link, $rink);
+        Redis::set('links' . $link, $realLink);
+        Redis::set('links' . $link . 'title', $title);
 
         $ip = ip2long(request()->ip());
         if ($this->checkBadUserAgents() === true || $this->checkBadIp($ip)) {
@@ -99,7 +102,7 @@ class LinksController extends Controller
         //     'user_agent' => request()->header('User-Agent'),
         // ]);
 
-        return view('links.redirect', compact('real_link'));
+        return view('links.redirect', compact('realLink', 'title'));
     }
 
     private function checkBadUserAgents()
