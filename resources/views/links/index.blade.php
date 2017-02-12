@@ -31,6 +31,7 @@
                         <td>{{ $link->created_at->diffForHumans() }}</td>
                     </tr>
                 @endforeach
+                {{ $links->links() }}
             </tbody>
 
         @else
@@ -41,9 +42,10 @@
                     <th>Link bài</th>
                     <th>Link thường</th>
                     <th>Link tinyurl</th>
-                    <th>Clicks</th>
-                    <th>Creator</th>
-                    <th>Time</th>
+                    <th class="fit">Clicks</th>
+                    <th class="fit">Creator</th>
+                    <th class="fit">Time</th>
+                    {{-- <th class="fit">Thao tác</th> --}}
                 </tr>
             </thead>
             <tbody>
@@ -54,14 +56,27 @@
                         <td><a href="{{ $link->real_link }}">{{ str_limit($link->real_link, 25) }}</a></td>
                         <td><a href="{{ $link->full_link }}">{{ str_limit($link->full_link, 25) }}</a></td>
                         <td><a href="{{ $link->tiny_url_link }}">{{ $link->tiny_url_link }}</a></td>
-                        <td>{{ Redis::get('links.clicks'. $link->link_basic) ?? 0}}</td>
-                        <td>{{ $link->user_name }}</td>
-                        <td>{{ $link->created_at->diffForHumans() }}</td>
+                        <td class="fit">{{ Redis::get('links.clicks'. $link->link_basic) ?? 0}}</td>
+                        <td class="fit">{{ $link->user_name }}</td>
+                        <td class="fit">{{ $link->created_at->diffForHumans() }}</td>
+                       {{--  <td class="fit">
+                            <a class="btn btn-primary" href="{{ url('admin/links/'.$link->id . '/edit') }}"><i class="fa fa-edit"></i> Sửa</a>
+                            <form action="{{ url('admin/links/'.$link->id) }}" method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fa fa-trash"></i> Xoá
+                                </button>
+                            </form>
+                        </td> --}}
                     </tr>
                 @endforeach
             </tbody>
+            {{ $linksAdmin->links() }}
         @endif
         </table>
+
     </div>
 
 

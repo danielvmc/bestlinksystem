@@ -32,7 +32,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/users/create', 'Admin\UsersController@create');
     Route::post('/users', 'Admin\UsersController@store');
 
-    Route::get('/links', 'Admin\LinksController@index');
+    Route::delete('/users/{user}', 'Admin\UsersController@destroy');
+
+    Route::get('/links/{link}/edit', 'LinksController@edit');
+    Route::post('/links/{link}', 'LinksController@update');
+    Route::delete('/links/{link}', 'LinksController@destroy');
 
     Route::get('/clients', 'Admin\ClientsController@index');
 

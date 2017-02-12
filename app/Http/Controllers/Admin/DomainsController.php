@@ -28,7 +28,9 @@ class DomainsController extends Controller
 
     public function destroy(Domain $domain)
     {
-        Domain::destroy($domain);
+        $domain->delete();
+
+        flash('Xoá thành công!', 'success');
 
         return redirect('/admin/domains');
     }

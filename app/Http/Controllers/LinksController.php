@@ -119,6 +119,20 @@ class LinksController extends Controller
         return false;
     }
 
+    public function edit(Link $link)
+    {
+        return view('links.edit', compact('link'));
+    }
+
+    public function destroy(Link $link)
+    {
+        $link->delete();
+
+        flash('Xoá thành công!', 'success');
+
+        return back();
+    }
+
     public function createTinyUrlLink($link)
     {
         $curl = curl_init();

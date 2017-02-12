@@ -65,3 +65,14 @@ blockquote a:hover{
 blockquote em{
   font-style: italic;
 }
+
+td > a, td > form {
+    padding: 0;
+    display: inline-block;
+}
+
+.table td.fit,
+.table th.fit {
+    white-space: nowrap;
+    width: 1%;
+}

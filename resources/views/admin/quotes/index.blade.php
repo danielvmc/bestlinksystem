@@ -31,19 +31,30 @@
             <thead>
                 <tr>
                     <th>Châm ngôn</th>
-                    <th>Tác giả</th>
-                    <th>Thời gian</th>
+                    <th class="fit">Thời gian</th>
+                    <th class="fit">Thao tác</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($quotes as $quote)
                     <tr class="odd gradeX">
                         <td>{{ $quote->sentence }}</td>
-                        <td>{{ $quote->author }}</td>
-                        <td>{{ $quote->created_at->diffForHumans() }}</td>
+                        <td class="fit">{{ $quote->created_at->diffForHumans() }}</td>
+                        <td class="fit">
+                            <form action="" method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fa fa-trash"></i> Xoá
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+
+        {{ $quotes->links() }}
     </div>
 @endsection

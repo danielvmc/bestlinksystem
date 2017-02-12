@@ -13,6 +13,7 @@
                     <th>Tên đăng nhập</th>
                     <th>Tổng Bài</th>
                     <th>Tổng click bài</th>
+                    <th class="fit">Thao tác</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,6 +23,17 @@
                         <td>{{ $user->username }}</td>
                         <td>{{ $user->links->count() }}</td>
                         <td>{{ $user->links->sum('clicks') }}</td>
+                        <td class="fit">
+            {{--                 <a class="btn btn-primary" href=""><i class="fa fa-edit"></i> Sửa</a> --}}
+                            <form action="{{ url('admin/users/'.$user->id) }}" method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fa fa-trash"></i> Xoá
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

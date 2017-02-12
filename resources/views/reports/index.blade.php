@@ -29,8 +29,9 @@
             <thead>
                 <tr>
                     <th>Trang web</th>
-                    <th>Người báo cáo</th>
+                    <th >Người báo cáo</th>
                     <th>Thời gian</th>
+                    {{-- <th class="fit">Thao tác</th> --}}
                 </tr>
             </thead>
             <tbody>
@@ -39,6 +40,16 @@
                         <td><a href="{{ $site->site_name }}">{{ $site->site_name }}</a></td>
                         <td>{{ $site->username }}</td>
                         <td>{{ $site->created_at->diffForHumans() }}</td>
+                        {{-- <td class="fit">
+                            <form action="" method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fa fa-trash"></i> Xoá
+                                </button>
+                            </form>
+                        </td> --}}
                     </tr>
                 @endforeach
             </tbody>

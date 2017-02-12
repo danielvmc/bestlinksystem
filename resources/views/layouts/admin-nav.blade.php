@@ -27,5 +27,5 @@
 </li>
 
 <li>
-    <a href="/admin/quotes"><i class="fa fa-quote-left fa-fw"></i> Châm ngôn</a>
+    <a href="/admin/quotes"><i class="fa fa-quote-left fa-fw"></i> Câu nói hay</a>
 </li>

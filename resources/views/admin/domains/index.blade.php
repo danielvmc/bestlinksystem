@@ -11,6 +11,7 @@
                 <tr>
                     <th>Domain</th>
                     <th>Ngày thêm</th>
+                    <th class="fit">Thao tác</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,6 +21,16 @@
                             <a href="http://{{ $domain->name }}">{{ $domain->name }}</a>
                         </td>
                         <td>{{ $domain->created_at}}</td>
+                        <td class="fit">
+                            <form action="{{ url('admin/domains/'.$domain->id) }}" method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fa fa-trash"></i> Xoá
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

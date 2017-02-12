@@ -31,4 +31,13 @@ class UsersController extends Controller
 
         return redirect('/admin/users');
     }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+
+        flash('Xoá thành công!', 'success');
+
+        return back();
+    }
 }
