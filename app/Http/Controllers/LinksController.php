@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Agent;
 use App\Domain;
 use App\Link;
 use Illuminate\Support\Facades\Redis;
