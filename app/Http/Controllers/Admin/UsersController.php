@@ -39,9 +39,6 @@ class UsersController extends Controller
 
     public function update(User $user)
     {
-        $this->validate(request(), [
-            'password' => 'min:8',
-        ]);
         $user->update(request()->intersect([
             'name',
             'username',
