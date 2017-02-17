@@ -24,7 +24,7 @@
                         <td>{{ $user->links->count() }}</td>
                         <td>{{ $user->links->sum('clicks') }}</td>
                         <td class="fit">
-            {{--                 <a class="btn btn-primary" href=""><i class="fa fa-edit"></i> Sửa</a> --}}
+                            <a class="btn btn-primary" href="{{ url('/admin/users/'.$user->id.'/edit') }}"><i class="fa fa-edit"></i> Sửa</a>
                             <form action="{{ url('admin/users/'.$user->id) }}" method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}

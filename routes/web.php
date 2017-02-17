@@ -32,6 +32,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/users/create', 'Admin\UsersController@create');
     Route::post('/users', 'Admin\UsersController@store');
 
+    Route::get('/users/{user}/edit', 'Admin\UsersController@edit');
+    Route::post('/users/{user}', 'Admin\UsersController@update');
+
     Route::delete('/users/{user}', 'Admin\UsersController@destroy');
 
     Route::get('/links/{link}/edit', 'LinksController@edit');

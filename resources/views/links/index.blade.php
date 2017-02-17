@@ -31,9 +31,9 @@
                         <td>{{ $link->created_at->diffForHumans() }}</td>
                     </tr>
                 @endforeach
-                {{ $links->links() }}
-            </tbody>
 
+            </tbody>
+            {{ $links->links() }}
         @else
             <thead>
                 <tr>
@@ -78,7 +78,4 @@
         </table>
 
     </div>
-
-
-    {{ $links->links() }}
 @endsection
