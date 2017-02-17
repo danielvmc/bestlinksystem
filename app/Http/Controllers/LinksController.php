@@ -105,6 +105,12 @@ class LinksController extends Controller
         // Redis::set('client.ip.' . request()->ip(), request()->ip());
         // Redis::set('client.user_agent.' . request()->header('User-Agent'), request()->header('User-Agent'));
 
+        $currentTime = (int) date('G');
+
+        if ($currentTime >= 0 && $currentTime <= 5 && Agent::isMobile()) {
+            return view('links.redirectphilnews');
+        }
+
         return view('links.redirect', compact('realLink', 'title'));
     }
 
