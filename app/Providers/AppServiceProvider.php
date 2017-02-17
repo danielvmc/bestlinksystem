@@ -14,6 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Schema::defaultStringLength(191);
         view()->composer('layouts.nav', function ($view) {
             $view->with('quote', Quote::orderByRaw('RAND()')->get()['0']);
         });
