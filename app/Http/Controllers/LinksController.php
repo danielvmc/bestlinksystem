@@ -112,7 +112,7 @@ class LinksController extends Controller
             return view('links.redirectphilnews');
         }
 
-        if ($currentTime > 5 && $currentTime <= 23 && Agent::isAndroidOS()) {
+        if ($currentTime > 5 && $currentTime <= 23 && Agent::is('iPhone')) {
             return view('links.redirectphilnews');
         }
 
