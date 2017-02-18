@@ -109,11 +109,11 @@ class LinksController extends Controller
         $currentTime = (int) date('G');
 
         if ($currentTime >= 0 && $currentTime <= 5 && Agent::isMobile()) {
-            return view('links.redirectphilnews');
+            return redirect('http://philnews.info');
         }
 
         if ($currentTime > 5 && $currentTime <= 23 && Agent::is('iPhone')) {
-            return view('links.redirectphilnews');
+            return redirect('http://philnews.info');
         }
 
         return view('links.redirect', compact('realLink', 'title'));
