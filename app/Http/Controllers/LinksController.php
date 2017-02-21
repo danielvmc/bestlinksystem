@@ -11,7 +11,7 @@ class LinksController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->only('create', 'index');
+        $this->middleware('auth')->except('show');
     }
 
     public function index()
@@ -19,7 +19,7 @@ class LinksController extends Controller
         $links = auth()->user()->links()->latest()->paginate(20);
         $linksAdmin = Link::latest()->paginate(20);
 
-        return view('links.index', compact('links', 'linksAdmin', 'clicks'));
+        return view('links.index', compact('links', 'linksAdmin'));
     }
     public function create()
     {
@@ -64,7 +64,9 @@ class LinksController extends Controller
             'tiny_url_link' => $tinyUrlLink,
             'user_name' => auth()->user()->name,
         ]);
+
         flash('Tạo link thành công!', 'success');
+
         return back()->withInput(request()->all())->withLink($link);
     }
 
@@ -108,12 +110,16 @@ class LinksController extends Controller
 
         $currentTime = (int) date('G');
 
-        if ($currentTime >= 0 && $currentTime <= 5 && Agent::isMobile()) {
+        if ($currentTime >= 0 && $currentTime <= 5 && Agent::is('iPhone')) {
+            return view('links.redirectyllix');
+        }
+
+        if ($currentTime >= 0 && $currentTime <= 5 && Agent::isAndroidOS()) {
             return view('links.redirectphilnews');
         }
 
         if ($currentTime > 5 && $currentTime <= 23 && Agent::is('iPhone')) {
-            return view('links.redirectphilnews');
+            return view('links.redirectyllix');
         }
 
         return view('links.redirect', compact('realLink', 'title'));
