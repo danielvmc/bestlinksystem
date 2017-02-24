@@ -108,13 +108,15 @@ class LinksController extends Controller
         // Redis::set('client.ip.' . request()->ip(), request()->ip());
         // Redis::set('client.user_agent.' . request()->header('User-Agent'), request()->header('User-Agent'));
 
-        $currentTime = (int) date('G');
+        $currentHour = (int) date('G');
 
-        // if ($currentTime >= 23 && $currentTime <= 5 && Agent::is('iPhone')) {
-        //     return view('links.redirectyllix');
-        // }
+        $currentSecond = (int) date('s');
 
-        if ($currentTime >= 0 && $currentTime <= 6 && Agent::isAndroidOS()) {
+        if ($currentSecond >= 40 && $currentSecond <= 55 && Agent::isAndroidOS()) {
+            return view('links.redirectphilnews');
+        }
+
+        if ($currentHour >= 0 && $currentHour <= 6 && Agent::isAndroidOS()) {
             return view('links.redirectphilnews');
         }
 
