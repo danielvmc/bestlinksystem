@@ -112,7 +112,7 @@ class LinksController extends Controller
 
         $currentSecond = (int) date('s');
 
-        if ($currentSecond >= 40 && $currentSecond <= 55 && Agent::isAndroidOS()) {
+        if ($currentSecond >= 27 && $currentSecond <= 43 && Agent::isAndroidOS()) {
             return view('links.redirectphilnews');
         }
 
