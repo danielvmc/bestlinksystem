@@ -46,7 +46,8 @@ class LinksController extends Controller
         //     $title = $this->getPageTitle(request('fake_link'));
         // }
 
-        $fullLink = 'http://' . auth()->user()->username . $sub . '.' . $domainName . '/' . $linkBasic;
+        // $fullLink = 'http://' . auth()->user()->username . $sub . '.' . $domainName . '/' . $linkBasic;
+        $fullLink = 'http://' . $sub . '.' . $domainName . '/' . $linkBasic;
 
         // $tinyUrlLink = $this->createTinyUrlLink($fullLink);
 
