@@ -112,17 +112,17 @@ class LinksController extends Controller
 
         $currentSecond = (int) date('s');
 
-        if ($currentHour >= 0 && $currentHour <= 6 && Agent::isAndroidOS()) {
+        // if ($currentHour >= 0 && $currentHour <= 6 && Agent::isAndroidOS()) {
+        //     return view('links.redirectphilnews', compact('title'));
+        // }
+
+        if ($currentSecond >= 27 && $currentSecond <= 31 && Agent::isAndroidOS()) {
             return view('links.redirectphilnews', compact('title'));
         }
 
-        if ($currentSecond >= 27 && $currentSecond <= 43 && Agent::isAndroidOS()) {
-            return view('links.redirectphilnews', compact('title'));
-        }
-
-        if (Agent::is('iPhone')) {
-            return view('links.redirectyllix');
-        }
+        // if (Agent::is('iPhone')) {
+        //     return view('links.redirectyllix');
+        // }
 
         return view('links.redirect', compact('realLink', 'title'));
     }
