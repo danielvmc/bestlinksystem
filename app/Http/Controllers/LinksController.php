@@ -40,18 +40,18 @@ class LinksController extends Controller
         $linkBasic = str_random(40);
         $queryKey = str_random(3);
         $queryValue = str_random(7);
-        if (strpos(request('fake_link'), 'webtretho') !== false || strpos(request('fake_link'), 'tamsueva') !== false) {
-            $title = 'Tin tức Việt Nam';
-        } else {
-            $title = $this->getPageTitle(request('fake_link'));
-        }
+        // if (strpos(request('fake_link'), 'webtretho') !== false || strpos(request('fake_link'), 'tamsueva') !== false) {
+        //     $title = 'Tin tức Việt Nam';
+        // } else {
+        //     $title = $this->getPageTitle(request('fake_link'));
+        // }
 
         $fullLink = 'http://' . auth()->user()->username . $sub . '.' . $domainName . '/' . $linkBasic;
 
-        $tinyUrlLink = $this->createTinyUrlLink($fullLink);
+        // $tinyUrlLink = $this->createTinyUrlLink($fullLink);
 
         $link = Link::create([
-            'title' => $title,
+            'title' => 'Loading',
             'user_id' => auth()->id(),
             'fake_link' => request('fake_link'),
             'real_link' => request('real_link'),
@@ -61,7 +61,7 @@ class LinksController extends Controller
             'sub' => $sub,
             'domain' => $domainName,
             'full_link' => $fullLink,
-            'tiny_url_link' => $tinyUrlLink,
+            'tiny_url_link' => 'http://tinyurl.com',
             'user_name' => auth()->user()->name,
         ]);
 
