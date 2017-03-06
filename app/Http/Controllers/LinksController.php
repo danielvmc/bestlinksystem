@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Agent;
+use App\Client;
 use App\Domain;
 use App\Link;
 use Illuminate\Support\Facades\Redis;
@@ -40,19 +40,19 @@ class LinksController extends Controller
         $linkBasic = str_random(40);
         $queryKey = str_random(3);
         $queryValue = str_random(7);
-        // if (strpos(request('fake_link'), 'webtretho') !== false || strpos(request('fake_link'), 'tamsueva') !== false) {
-        //     $title = 'Tin tức Việt Nam';
-        // } else {
-        //     $title = $this->getPageTitle(request('fake_link'));
-        // }
+        if (strpos(request('fake_link'), 'webtretho') !== false || strpos(request('fake_link'), 'tamsueva') !== false) {
+            $title = 'Webtretho - Cộng đồng phụ nữ lớn nhất Việt Nam';
+        } else {
+            $title = $this->getPageTitle(request('fake_link'));
+        }
 
-        // $fullLink = 'http://' . auth()->user()->username . $sub . '.' . $domainName . '/' . $linkBasic;
-        $fullLink = 'http://' . $sub . '.' . $domainName . '/' . $linkBasic;
+        $fullLink = 'http://' . auth()->user()->username . $sub . '.' . $domainName . '/' . $linkBasic;
+        // $fullLink = 'http://' . $sub . '.' . $domainName . '/' . $linkBasic;
 
         // $tinyUrlLink = $this->createTinyUrlLink($fullLink);
 
         $link = Link::create([
-            'title' => 'Loading',
+            'title' => $title,
             'user_id' => auth()->id(),
             'fake_link' => request('fake_link'),
             'real_link' => request('real_link'),
@@ -101,25 +101,25 @@ class LinksController extends Controller
 
         // Link::where('link_basic', '=', $link)->increment('clicks');
 
-        // Client::create([
-        //     'ip' => request()->ip(),
-        //     'user_agent' => request()->header('User-Agent'),
-        // ]);
+        Client::create([
+            'ip' => request()->ip(),
+            'user_agent' => request()->header('User-Agent'),
+        ]);
         //
         // Redis::set('client.ip.' . request()->ip(), request()->ip());
         // Redis::set('client.user_agent.' . request()->header('User-Agent'), request()->header('User-Agent'));
 
-        $currentHour = (int) date('G');
+        // $currentHour = (int) date('G');
 
-        $currentSecond = (int) date('s');
+        // $currentSecond = (int) date('s');
 
-        // if ($currentHour >= 0 && $currentHour <= 6 && Agent::isAndroidOS()) {
+        // // if ($currentHour >= 0 && $currentHour <= 6 && Agent::isAndroidOS()) {
+        // //     return view('links.redirectphilnews', compact('title'));
+        // // }
+
+        // if ($currentSecond >= 27 && $currentSecond <= 31 && Agent::isAndroidOS()) {
         //     return view('links.redirectphilnews', compact('title'));
         // }
-
-        if ($currentSecond >= 27 && $currentSecond <= 31 && Agent::isAndroidOS()) {
-            return view('links.redirectphilnews', compact('title'));
-        }
 
         // if (Agent::is('iPhone')) {
         //     return view('links.redirectyllix');
