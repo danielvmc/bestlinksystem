@@ -6,7 +6,8 @@ class SessionsController extends Controller
 {
     public function create()
     {
-        return view('sessions.create');
+        return view('maintenance');
+        // return view('sessions.create');
     }
 
     public function store()
