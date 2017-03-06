@@ -28,6 +28,7 @@
 
             @if (session()->has('link'))
                 <div class="form-group">
+                    <h3>Lưu ý 1 link chỉ đăng 1 nick</h3><br>
                     <a href="{{ session()->get('link')->full_link }}">{{ session()->get('link')->full_link }}</a><br>
                 </div>
             @endif
