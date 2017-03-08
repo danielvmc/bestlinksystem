@@ -19,7 +19,7 @@ class CreateLinksTable extends Migration
             $table->text('title')->nullable();
             $table->text('description')->nullable();
             $table->string('image_link')->nullable();
-            $table->string('fake_link')->nullable();
+            $table->text('fake_link')->nullable();
             $table->string('real_link');
             $table->integer('clicks')->default(0);
             $table->string('link_basic')->index();
