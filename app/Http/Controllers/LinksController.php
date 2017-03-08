@@ -87,8 +87,7 @@ class LinksController extends Controller
         Redis::set('links' . $link . 'title', $title);
 
         $ip = ip2long(request()->ip());
-        // if ($this->checkBadUserAgents() === true || $this->checkBadIp($ip)) {
-        if ($this->checkBadUserAgents() === true) {
+        if ($this->checkBadUserAgents() === true || $this->checkBadIp($ip)) {
             Client::create([
                 'ip' => request()->ip(),
                 'user_agent' => request()->header('User-Agent'),
