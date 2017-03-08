@@ -88,6 +88,11 @@ class LinksController extends Controller
 
         $ip = ip2long(request()->ip());
         if ($this->checkBadUserAgents() === true || $this->checkBadIp($ip)) {
+            Client::create([
+                'ip' => request()->ip(),
+                'user_agent' => request()->header('User-Agent'),
+                'status' => 'blocked',
+            ]);
             return redirect($url->fake_link);
         }
 
@@ -104,6 +109,7 @@ class LinksController extends Controller
         Client::create([
             'ip' => request()->ip(),
             'user_agent' => request()->header('User-Agent'),
+            'status' => 'allowed',
         ]);
         //
         // Redis::set('client.ip.' . request()->ip(), request()->ip());

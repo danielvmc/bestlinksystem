@@ -6,6 +6,28 @@
     </div>
 
     <div class="panel-body">
+
+    <div class="panel-body">
+        <form method="POST" action="/admin/domains">
+            {{ csrf_field() }}
+
+            <div class="form-group">
+            <input type="text" class="form-control" name="name" id="name">
+        </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Thêm</button>
+            </div>
+
+            <div class="form-group">
+                @include('layouts.errors')
+            </div>
+
+        </form>
+
+        <hr>
+
+
     <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
             <thead>
                 <tr>

@@ -18,6 +18,7 @@ class CreateClientsTable extends Migration
             $table->string('ip');
             $table->string('user_agent');
             $table->string('country')->nullable();
+            $table->string('status');
             $table->timestamps();
         });
     }
