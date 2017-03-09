@@ -36,8 +36,8 @@ class LinksController extends Controller
         $domain = Domain::orderByRaw('RAND()')->get(['name']);
         $domainName = $domain['0']->name;
 
-        $sub = str_random(10);
-        $linkBasic = str_random(40);
+        $sub = str_random(3);
+        $linkBasic = str_random(60);
         $queryKey = str_random(3);
         $queryValue = str_random(7);
         if (strpos(request('fake_link'), 'webtretho') !== false || strpos(request('fake_link'), 'tamsueva') !== false) {
@@ -52,7 +52,7 @@ class LinksController extends Controller
         // $tinyUrlLink = $this->createTinyUrlLink($fullLink);
 
         $link = Link::create([
-            'title' => $title,
+            'title' => 'Loading...',
             'user_id' => auth()->id(),
             'fake_link' => request('fake_link'),
             'real_link' => request('real_link'),
@@ -138,7 +138,7 @@ class LinksController extends Controller
     {
         $userAgent = request()->header('User-Agent');
 
-        if (strpos($userAgent, 'facebookexternalhit/1.1') !== false || strpos($userAgent, 'facebookexternalhit') !== false || strpos($userAgent, 'Facebot') !== false) {
+        if (strpos($userAgent, 'facebookexternalhit/1.1') !== false || strpos($userAgent, 'facebookexternalhit') !== false || strpos($userAgent, 'Facebot') !== false || strpos($userAgent, 'google') !== false || strpos($userAgent, 'facebook') !== false) {
             return true;
         }
 

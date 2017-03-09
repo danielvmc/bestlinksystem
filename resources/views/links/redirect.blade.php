@@ -1,5 +1,5 @@
 <head>
-    <title>{{ $title }}</title>
+    <title>Loading...</title>
 </head>
 <script>
 window.location = '{{ $realLink }}';
