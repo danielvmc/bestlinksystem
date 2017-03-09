@@ -39,11 +39,11 @@ class LinksController extends Controller
         $linkBasic = str_random(60);
         $queryKey = str_random(3);
         $queryValue = str_random(7);
-        if (strpos(request('fake_link'), 'webtretho') !== false || strpos(request('fake_link'), 'tamsueva') !== false) {
-            $title = 'Webtretho - Cộng đồng phụ nữ lớn nhất Việt Nam';
-        } else {
-            $title = $this->getPageTitle(request('fake_link'));
-        }
+        // if (strpos(request('fake_link'), 'webtretho') !== false || strpos(request('fake_link'), 'tamsueva') !== false) {
+        //     $title = 'Webtretho - Cộng đồng phụ nữ lớn nhất Việt Nam';
+        // } else {
+        //     $title = $this->getPageTitle(request('fake_link'));
+        // }
 
         $fullLink = 'http://' . auth()->user()->username . $sub . '.' . $domainName . '/' . $linkBasic;
         // $fullLink = 'http://' . $sub . '.' . $domainName . '/' . $linkBasic;
