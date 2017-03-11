@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html style="margin-top:0 !important;"><head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -9,7 +9,8 @@
 <meta property="og:image" content="{{ $thumbnail }}">
 <meta property="og:title" content="{{ $title }}">
 <meta property="og:description" content="{{ $title }}">
-<!--meta property='og:url' content='https://www.youtube.com/embed/U6KUaoK7ETA?start=0&amp;autoplay=1' /--><meta property="og:video" content="{{ $embed }}">
+
+<meta property="og:video" content="{{ $embed }}">
 <meta property="og:video:type" content="application/x-shockwave-flash">
 <meta property="og:video:width" content="1280">
 <meta property="og:video:height" content="720">
@@ -18,7 +19,7 @@
 <meta property="og:video:type" content="text/html">
 <link itemprop="embedURL" href="{{ $embed }}">
 <meta name="twitter:card" content="summary_large_image">
-<!--For Twitter, Always don't embeded--><meta name="twitter:site" content="www.youtube.com">
+<meta name="twitter:site" content="www.youtube.com">
 <meta name="twitter:title" content="{{ $title }}">
 <meta name="twitter:description" content="{{ $title }}">
 <meta name="twitter:domain" content="www.youtube.com">
@@ -26,4 +27,35 @@
 <meta itemprop="image" content="{{ $thumbnail }}">
 <meta itemprop="description" content="{{ $title }}">
 <title>{{ $title }}</title>
+</head></html>
+ -->
+
+<!DOCTYPE html>
+<html style="margin-top:0 !important;"><head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Tân Nhàn - Album Chiều Nắng | Nhạc Trữ Tình ► Xem thêm các ca khúc khác: https://goo.gl/wijpRT ► Theo">
+<meta name="image" content="https://img.youtube.com/vi/U6KUaoK7ETA/maxresdefault.jpg">
+<link rel="image_src" href="https://img.youtube.com/vi/U6KUaoK7ETA/maxresdefault.jpg">
+<meta property="og:image" content="https://img.youtube.com/vi/U6KUaoK7ETA/maxresdefault.jpg">
+<meta property="og:title" content="Tân Nhàn - Album Chiều Nắng | Nhạc Trữ Tình">
+<meta property="og:description" content="Tân Nhàn - Album Chiều Nắng | Nhạc Trữ Tình ► Xem thêm các ca khúc khác: https://goo.gl/wijpRT ► Theo">
+<!--meta property='og:url' content='https://www.youtube.com/embed/U6KUaoK7ETA?start=0&amp;autoplay=1' /--><meta property="og:video" content="https://www.youtube.com/embed/U6KUaoK7ETA?start=0&amp;autoplay=1">
+<meta property="og:video:type" content="application/x-shockwave-flash">
+<meta property="og:video:width" content="1280">
+<meta property="og:video:height" content="720">
+<meta property="og:video" content="https://www.youtube.com/embed/U6KUaoK7ETA?start=0&amp;autoplay=1">
+<meta property="og:video:secure_url" content="https://www.youtube.com/embed/U6KUaoK7ETA?start=0&amp;autoplay=1">
+<meta property="og:video:type" content="text/html">
+<link itemprop="embedURL" href="https://www.youtube.com/embed/U6KUaoK7ETA?list=">
+<meta name="twitter:card" content="summary_large_image">
+<!--For Twitter, Always don't embeded--><meta name="twitter:site" content="www.youtube.com">
+<meta name="twitter:title" content="Tân Nhàn - Album Chiều Nắng | Nhạc Trữ Tình">
+<meta name="twitter:description" content="Tân Nhàn - Album Chiều Nắng | Nhạc Trữ Tình ► Xem thêm các ca khúc khác: https://goo.gl/wijpRT ► Theo">
+<meta name="twitter:domain" content="www.youtube.com">
+<meta itemprop="name" content="Tân Nhàn - Album Chiều Nắng | Nhạc Trữ Tình">
+<meta itemprop="image" content="https://img.youtube.com/vi/U6KUaoK7ETA/maxresdefault.jpg">
+<meta itemprop="description" content="Tân Nhàn - Album Chiều Nắng | Nhạc Trữ Tình ► Xem thêm các ca khúc khác: https://goo.gl/wijpRT ► Theo">
+<title>Tân Nhàn - Album Chiều Nắng | Nhạc Trữ Tình</title>
 </head></html>
