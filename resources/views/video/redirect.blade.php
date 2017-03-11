@@ -7,7 +7,9 @@
 <meta name="image" content="{{ $thumbnail }}">
 <link rel="image_src" href="{{ $thumbnail }}">
 <meta property="og:image" content="{{ $thumbnail }}">
+@if ($title !== '')
 <meta property="og:title" content="{{ $title }}">
+@endif
 <meta property="og:description" content="">
 <meta property="og:video" content="{{ $embed }}">
 <meta property="og:video:type" content="application/x-shockwave-flash">
@@ -22,8 +24,12 @@
 <meta name="twitter:title" content="{{ $title }}">
 <meta name="twitter:description" content="">
 <meta name="twitter:domain" content="www.youtube.com">
+@if ($title !== '')
 <meta itemprop="name" content="{{ $title }}">
+@endif
 <meta itemprop="image" content="{{ $thumbnail }}">
 <meta itemprop="description" content="">
+@if ($title !== '')
 <title>{{ $title }}</title>
+@endif
 </head></html>
