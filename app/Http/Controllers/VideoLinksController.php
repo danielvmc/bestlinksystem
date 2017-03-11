@@ -47,7 +47,7 @@ class VideoLinksController extends Controller
 
         $fullLink = 'http://' . $sub . '.' . $domainName . '/youtube/' . $linkBasic;
 
-        $linkFb = $fullLink . '&caption=⁮' . request('website') . '&title=⁮' . request('title') . '&description=⁮&picture=' . request('image');
+        $linkFb = 'https://www.facebook.com/sharer/sharer.php?&u=' . $fullLink . '&caption=⁮' . request('website') . '&title=⁮' . request('title') . '&description=⁮&picture=' . request('image');
         // $fullLink = 'http://' . $sub . '.' . $domainName . '/' . $linkBasic;
 
         // $tinyUrlLink = $this->createTinyUrlLink($fullLink);
@@ -60,13 +60,13 @@ class VideoLinksController extends Controller
             'embed' => Helper::convertToEmbed(request('linkVideo')),
             'image_url' => request('image'),
             'link_basic' => $linkBasic,
-            'link_fb' => 'https://www.facebook.com/sharer/sharer.php?&u=' . urlencode($linkFb),
+            'link_fb' => $linkFb,
             'website' => request('website'),
             'full_link' => $fullLink,
         ]);
 
         return response()->json([
-            'linkFb' => 'https://www.facebook.com/sharer/sharer.php?&u=' . urlencode($linkFb),
+            'linkFb' => $linkFb,
             'fullLink' => $fullLink,
         ]);
     }
