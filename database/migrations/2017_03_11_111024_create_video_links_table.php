@@ -25,6 +25,7 @@ class CreateVideoLinksTable extends Migration
             $table->text('link_fb');
             $table->string('embed');
             $table->integer('user_id');
+            $table->string('user_name');
             $table->timestamps();
         });
     }

@@ -32,6 +32,11 @@ class User extends Authenticatable
         return $this->hasMany(Link::class);
     }
 
+    public function videolinks()
+    {
+        return $this->hasMany(VideoLink::class);
+    }
+
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = bcrypt($password);

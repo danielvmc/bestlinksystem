@@ -21,6 +21,8 @@ Route::post('/', 'LinksController@store');
 Route::get('/link-ad', 'VideoLinksController@create');
 Route::post('/link-ad', 'VideoLinksController@store');
 
+Route::get('/linksad', 'VideoLinksController@index');
+
 Route::post('/get-info', 'VideoLinksController@getInfo');
 
 Route::get('/youtube/{link}', 'VideoLinksController@show');

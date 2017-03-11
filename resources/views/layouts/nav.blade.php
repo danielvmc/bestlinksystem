@@ -47,6 +47,10 @@
                         </li>
 
                         <li>
+                            <a href="/linksad"><i class="fa fa-list-ul fa-fw"></i> Danh sách link Ad</a>
+                        </li>
+
+                        <li>
                             <a href="/reports"><i class="fa fa-flag fa-fw"></i> Báo cáo link xấu</a>
                         </li>
 

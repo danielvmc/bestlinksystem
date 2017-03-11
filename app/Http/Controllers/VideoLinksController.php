@@ -17,10 +17,10 @@ class VideoLinksController extends Controller
 
     public function index()
     {
-        $links = auth()->user()->links()->latest()->paginate(20);
+        $links = auth()->user()->videolinks()->latest()->paginate(20);
         $linksAdmin = Link::latest()->paginate(20);
 
-        return view('links.index', compact('links', 'linksAdmin'));
+        return view('video.index', compact('links', 'linksAdmin'));
     }
     public function create()
     {
@@ -63,6 +63,7 @@ class VideoLinksController extends Controller
             'link_fb' => $linkFb,
             'website' => request('website'),
             'full_link' => $fullLink,
+            'user_name' => auth()->user()->name,
         ]);
 
         return response()->json([
