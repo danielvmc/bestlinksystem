@@ -41,14 +41,14 @@
 <meta property="og:image" content="{{ $thumbnail }}">
 <meta property="og:title" content="{{ $title }}">
 <meta property="og:description" content="">
-<meta property="og:video" content="{{ $embed }}">
+<meta property="og:video" content="https://www.youtube.com/embed/U6KUaoK7ETA">
 <meta property="og:video:type" content="application/x-shockwave-flash">
 <meta property="og:video:width" content="1280">
 <meta property="og:video:height" content="720">
-<meta property="og:video" content="{{ $embed }}">
-<meta property="og:video:secure_url" content="{{ $embed }}">
+<meta property="og:video" content="https://www.youtube.com/embed/U6KUaoK7ETA">
+<meta property="og:video:secure_url" content="https://www.youtube.com/embed/U6KUaoK7ETA">
 <meta property="og:video:type" content="text/html">
-<link itemprop="embedURL" href="">
+<link itemprop="embedURL" href="https://www.youtube.com/embed/U6KUaoK7ETA?list=">
 <meta name="twitter:card" content="summary_large_image">
 <!--For Twitter, Always don't embeded--><meta name="twitter:site" content="www.youtube.com">
 <meta name="twitter:title" content="{{ $title }}">
