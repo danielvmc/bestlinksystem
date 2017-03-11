@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="col-lg-12">
-        <h1 class="page-header">Tạo link</h1>
+        <h1 class="page-header">Tạo link Spam</h1>
     </div>
     <div class="panel-body">
         <form method="POST" action="/">

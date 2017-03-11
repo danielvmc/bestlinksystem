@@ -18,6 +18,13 @@ Route::get('/logout', 'SessionsController@destroy');
 Route::get('/', 'LinksController@create')->name('home');
 Route::post('/', 'LinksController@store');
 
+Route::get('/link-ad', 'VideoLinksController@create');
+Route::post('/link-ad', 'VideoLinksController@store');
+
+Route::post('/get-info', 'VideoLinksController@getInfo');
+
+Route::get('/youtube/{link}', 'VideoLinksController@show');
+
 Route::get('/reports', 'ReportsController@index');
 Route::post('/reports', 'ReportsController@store');
 

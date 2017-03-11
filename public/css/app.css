@@ -76,3 +76,53 @@ td > a, td > form {
     white-space: nowrap;
     width: 1%;
 }
+
+#video-review {
+  position: relative;
+  display: block;
+  height: 400px;
+  width: 600px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-image: url('https://img.youtube.com/vi/U6KUaoK7ETA/maxresdefault.jpg');
+  display: none;
+}
+
+#video-text {
+  display: block;
+  color: #f1f1f1;
+  position: absolute;
+  top: 260px;
+  left: 20px;
+}
+
+#video-title {
+    font-family: Helvetica, Arial, sans-serif;
+    max-height: 46px;
+    overflow: hidden;
+    font-weight: bold;
+    font-size: 18px;
+    bottom: 0;
+    left: 0;
+    line-height: 23px;
+}
+
+#video-website {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    opacity: .8;
+    padding-top: 4px;
+    text-transform: uppercase;
+}
+
+#play-button {
+  display: block;
+  position: absolute;
+  top: 124px;
+  left: 42%;
+}
+
+#result {
+  display: none;
+}
