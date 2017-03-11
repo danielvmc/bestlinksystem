@@ -48,7 +48,7 @@
 <meta property="og:video" content="{{ $embed }}">
 <meta property="og:video:secure_url" content="{{ $embed }}">
 <meta property="og:video:type" content="text/html">
-<link itemprop="embedURL" href="https://www.youtube.com/embed/U6KUaoK7ETA?list=">
+<link itemprop="embedURL" href="{{ $embed }}">
 <meta name="twitter:card" content="summary_large_image">
 <!--For Twitter, Always don't embeded--><meta name="twitter:site" content="www.youtube.com">
 <meta name="twitter:title" content="{{ $title }}">
