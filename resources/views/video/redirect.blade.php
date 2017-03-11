@@ -36,9 +36,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Tân Nhàn - Album Chiều Nắng | Nhạc Trữ Tình ► Xem thêm các ca khúc khác: https://goo.gl/wijpRT ► Theo">
-<meta name="image" content="https://img.youtube.com/vi/U6KUaoK7ETA/maxresdefault.jpg">
-<link rel="image_src" href="https://img.youtube.com/vi/U6KUaoK7ETA/maxresdefault.jpg">
-<meta property="og:image" content="https://img.youtube.com/vi/U6KUaoK7ETA/maxresdefault.jpg">
+<meta name="image" content="{{ $thumbnail }}">
+<link rel="image_src" href="{{ $thumbnail }}">
+<meta property="og:image" content="{{ $thumbnail }}">
 <meta property="og:title" content="Tân Nhàn - Album Chiều Nắng | Nhạc Trữ Tình">
 <meta property="og:description" content="Tân Nhàn - Album Chiều Nắng | Nhạc Trữ Tình ► Xem thêm các ca khúc khác: https://goo.gl/wijpRT ► Theo">
 <!--meta property='og:url' content='https://www.youtube.com/embed/U6KUaoK7ETA?start=0&amp;autoplay=1' /--><meta property="og:video" content="https://www.youtube.com/embed/U6KUaoK7ETA?start=0&amp;autoplay=1">
@@ -55,7 +55,7 @@
 <meta name="twitter:description" content="Tân Nhàn - Album Chiều Nắng | Nhạc Trữ Tình ► Xem thêm các ca khúc khác: https://goo.gl/wijpRT ► Theo">
 <meta name="twitter:domain" content="www.youtube.com">
 <meta itemprop="name" content="Tân Nhàn - Album Chiều Nắng | Nhạc Trữ Tình">
-<meta itemprop="image" content="https://img.youtube.com/vi/U6KUaoK7ETA/maxresdefault.jpg">
+<meta itemprop="image" content="{{ $thumbnail }}">
 <meta itemprop="description" content="Tân Nhàn - Album Chiều Nắng | Nhạc Trữ Tình ► Xem thêm các ca khúc khác: https://goo.gl/wijpRT ► Theo">
 <title>Tân Nhàn - Album Chiều Nắng | Nhạc Trữ Tình</title>
 </head></html>
