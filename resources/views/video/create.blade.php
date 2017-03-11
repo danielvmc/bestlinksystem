@@ -25,12 +25,12 @@
 
             <div class="form-group">
                 <label for="title">Tiêu đề video:</label>
-                <input type="text" class="form-control" name="title" id="title" onchange="setVideoTitle();">
+                <input type="text" class="form-control" name="title" id="title" onchange="setVideoTitle();" required>
             </div>
 
             <div class="form-group">
                 <label for="website">Địa chỉ website:</label>
-                <input type="text" class="form-control" name="website" id="website" onkeyup="setVideoWebsite();">
+                <input type="text" class="form-control" name="website" id="website" onkeyup="setVideoWebsite();" required>
             </div>
 
             <div class="form-group">
@@ -156,6 +156,11 @@ function setThumbnail(imageUrl) {
                 title: title,
                 website: website,
                 image: image
+           },
+           statusCode: {
+            422: function () {
+                alert('Cần điền đủ link video là link đích.');
+            }
            }
         }).done(function (data) {
             $('#result').show();
