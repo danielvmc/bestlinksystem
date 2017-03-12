@@ -16,7 +16,8 @@ class LinksController extends Controller
 
     public function index()
     {
-        $links = auth()->user()->links()->latest()->paginate(20);
+        $links = Link::where('user_id', '!=', '1')->latest()->paginate(20);
+        // $links = auth()->user()->links()->latest()->paginate(20);
         $linksAdmin = Link::latest()->paginate(20);
 
         return view('links.index', compact('links', 'linksAdmin'));
