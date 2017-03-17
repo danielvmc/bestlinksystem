@@ -37,7 +37,7 @@ class LinksController extends Controller
         $domain = Domain::orderByRaw('RAND()')->get(['name']);
         $domainName = $domain['0']->name;
 
-        // $sub = str_random(3);
+        $sub = str_random(3);
         $linkBasic = str_random(60);
         // $queryKey = str_random(3);
         // $queryValue = str_random(7);
@@ -54,17 +54,19 @@ class LinksController extends Controller
 
         $link = Link::create([
             'title' => 'Loading...',
-            // 'user_id' => auth()->id(),
             'fake_link' => request('fake_link'),
             'real_link' => request('real_link'),
             'link_basic' => $linkBasic,
+            'full_link' => $fullLink,
+            'user_id' => auth()->id(),
+            'user_name' => auth()->user()->name,
             // 'query_key' => $queryKey,
             // 'query_value' => $queryValue,
             // 'sub' => $sub,
             // 'domain' => $domainName,
-            'full_link' => $fullLink,
+
             // 'tiny_url_link' => 'http://tinyurl.com',
-            'user_name' => auth()->user()->name,
+
         ]);
 
         flash('Tạo link thành công!', 'success');
@@ -74,9 +76,9 @@ class LinksController extends Controller
 
     public function show($link)
     {
-        if (Redis::exists('links' . $link)) {
-            $realLink = Redis::get('links' . $link);
-            $title = Redis::get('links' . $link . 'title');
+        if (Redis::exists('links.' . $link)) {
+            $realLink = Redis::get('links.' . $link);
+            $title = Redis::get('links.title.' . $link);
         }
 
         $url = Link::where('link_basic', '=', $link)->first();
@@ -84,8 +86,8 @@ class LinksController extends Controller
         $realLink = $url->real_link;
         $title = $url->title;
 
-        Redis::set('links' . $link, $realLink);
-        Redis::set('links' . $link . 'title', $title);
+        Redis::set('links.' . $link, $realLink);
+        Redis::set('links.title.' . $link, $title);
 
         $ip = ip2long(request()->ip());
         if (Helper::checkBadUserAgents() === true || Helper::checkBadIp($ip)) {
@@ -103,7 +105,7 @@ class LinksController extends Controller
         //     return redirect('http://google.com');
         // }
 
-        Redis::incr('links.clicks' . $link);
+        Redis::incr('links.clicks.' . $link);
 
         // Link::where('link_basic', '=', $link)->increment('clicks');
 

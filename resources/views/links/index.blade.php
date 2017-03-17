@@ -14,9 +14,9 @@
 {{--                     <th>Tiêu đề</th> --}}
                     <th>Link giả</th>
                     <th>Link bài</th>
-                    <th>Link đăng</th>
-                    <th class="fit">Clicks</th>
-                    <th class="fit">Người đăng</th>
+                    <th>Link đăng facebook</th>
+                    <th class="fit">Số click link</th>
+                    <th class="fit">Người tạo</th>
                     <th class="fit">Time</th>
                 </tr>
             </thead>
@@ -28,7 +28,7 @@
                         <td><a href="{{ $link->real_link }}">{{ str_limit($link->real_link, 30) }}</td>
                         <td><a href="{{ $link->full_link }}">{{ str_limit($link->full_link, 30) }}</a></td>
                         {{-- <td><a href="{{ $link->tiny_url_link }}">{{ $link->tiny_url_link }}</a></td> --}}
-                        <td class="fit">{{ Redis::get('links.clicks'. $link->link_basic) ?? 0 }}</td>
+                        <td class="fit">{{ Redis::get('links.clicks.'. $link->link_basic) ?? 0 }}</td>
                         <td class="fit">{{ $link->user_name }}</td>
                         <td class="fit">{{ $link->created_at->diffForHumans() }}</td>
                     </tr>
@@ -39,13 +39,13 @@
         @else
             <thead>
                 <tr>
-                    <th>Tiêu đề</th>
+                    {{-- <th>Tiêu đề</th> --}}
                     <th>Link giả</th>
                     <th>Link bài</th>
-                    <th>Link thường</th>
-                    <th>Link tinyurl</th>
-                    <th class="fit">Clicks</th>
-                    <th class="fit">Creator</th>
+                    <th>Link đăng facebook</th>
+                  {{--   <th>Link tinyurl</th> --}}
+                    <th class="fit">Số click link</th>
+                    <th class="fit">Người tạo</th>
                     <th class="fit">Time</th>
                     {{-- <th class="fit">Thao tác</th> --}}
                 </tr>
@@ -53,12 +53,12 @@
             <tbody>
                 @foreach($linksAdmin as $link)
                     <tr class="odd listeX">
-                        <td>{{ str_limit($link->title, 25) }}</td>
+                        {{-- <td>{{ str_limit($link->title, 25) }}</td> --}}
                         <td><a href="{{ $link->fake_link }}">{{ str_limit($link->fake_link, 25) }}</a></td>
                         <td><a href="{{ $link->real_link }}">{{ str_limit($link->real_link, 25) }}</a></td>
                         <td><a href="{{ $link->full_link }}">{{ str_limit($link->full_link, 25) }}</a></td>
-                        <td><a href="{{ $link->tiny_url_link }}">{{ $link->tiny_url_link }}</a></td>
-                        <td class="fit">{{ Redis::get('links.clicks'. $link->link_basic) ?? 0}}</td>
+                        {{-- <td><a href="{{ $link->tiny_url_link }}">{{ $link->tiny_url_link }}</a></td> --}}
+                        <td class="fit">{{ Redis::get('links.clicks.'. $link->link_basic) ?? 0}}</td>
                         <td class="fit">{{ $link->user_name }}</td>
                         <td class="fit">{{ $link->created_at->diffForHumans() }}</td>
                        {{--  <td class="fit">

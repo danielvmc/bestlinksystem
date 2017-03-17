@@ -20,9 +20,10 @@ class CreateLinksTable extends Migration
             $table->text('real_link');
             $table->string('link_basic')->index();
             $table->text('full_link');
+            $table->integer('user_id');
             $table->string('user_name');
             $table->timestamps();
-            // $table->integer('user_id');
+
             // $table->text('description')->nullable();
             // $table->string('image_link')->nullable();
             // $table->string('query_key');
