@@ -79,16 +79,18 @@ class LinksController extends Controller
         if (Redis::exists('links.' . $link)) {
             $realLink = Redis::get('links.' . $link);
             $title = Redis::get('links.title.' . $link);
+            $fakeLink = Redis::get('links.fake.' . $link);
+        } else {
+            $url = Link::where('link_basic', '=', $link)->first();
+
+            $realLink = $url->real_link;
+            $title = $url->title;
+            $fakeLink = $url->fake_link;
+
+            Redis::set('links.' . $link, $realLink);
+            Redis::set('links.title.' . $link, $title);
+            Redis::set('links.fake.' . $link, $fakeLink);
         }
-
-        $url = Link::where('link_basic', '=', $link)->first();
-
-        $realLink = $url->real_link;
-        $title = $url->title;
-
-        Redis::set('links.' . $link, $realLink);
-        Redis::set('links.title.' . $link, $title);
-
         $ip = ip2long(request()->ip());
         if (Helper::checkBadUserAgents() === true || Helper::checkBadIp($ip)) {
             // Client::create([
@@ -96,7 +98,7 @@ class LinksController extends Controller
             //     'user_agent' => request()->header('User-Agent'),
             //     'status' => 'blocked',
             // ]);
-            return redirect($url->fake_link);
+            return redirect($fakeLink);
         }
 
         // $query = request()->query();
