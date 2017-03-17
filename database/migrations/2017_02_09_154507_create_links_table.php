@@ -19,7 +19,7 @@ class CreateLinksTable extends Migration
             $table->text('fake_link')->nullable();
             $table->text('real_link');
             $table->string('link_basic')->index();
-            $table->text('full_link')->index();
+            $table->text('full_link');
             $table->string('user_name');
             $table->timestamps();
             // $table->integer('user_id');
