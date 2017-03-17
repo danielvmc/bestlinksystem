@@ -37,10 +37,10 @@ class LinksController extends Controller
         $domain = Domain::orderByRaw('RAND()')->get(['name']);
         $domainName = $domain['0']->name;
 
-        $sub = str_random(3);
+        // $sub = str_random(3);
         $linkBasic = str_random(60);
-        $queryKey = str_random(3);
-        $queryValue = str_random(7);
+        // $queryKey = str_random(3);
+        // $queryValue = str_random(7);
         // if (strpos(request('fake_link'), 'webtretho') !== false || strpos(request('fake_link'), 'tamsueva') !== false) {
         //     $title = 'Webtretho - Cộng đồng phụ nữ lớn nhất Việt Nam';
         // } else {
@@ -54,16 +54,16 @@ class LinksController extends Controller
 
         $link = Link::create([
             'title' => 'Loading...',
-            'user_id' => auth()->id(),
+            // 'user_id' => auth()->id(),
             'fake_link' => request('fake_link'),
             'real_link' => request('real_link'),
             'link_basic' => $linkBasic,
-            'query_key' => $queryKey,
-            'query_value' => $queryValue,
-            'sub' => $sub,
-            'domain' => $domainName,
+            // 'query_key' => $queryKey,
+            // 'query_value' => $queryValue,
+            // 'sub' => $sub,
+            // 'domain' => $domainName,
             'full_link' => $fullLink,
-            'tiny_url_link' => 'http://tinyurl.com',
+            // 'tiny_url_link' => 'http://tinyurl.com',
             'user_name' => auth()->user()->name,
         ]);
 
