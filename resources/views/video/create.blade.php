@@ -159,7 +159,7 @@ function setThumbnail(imageUrl) {
            },
            statusCode: {
             422: function () {
-                alert('Cần điền đủ link video là link đích.');
+                alert('Cần điền đủ link video và link đích.');
             }
            }
         }).done(function (data) {

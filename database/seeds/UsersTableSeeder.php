@@ -17,61 +17,85 @@ class UsersTableSeeder extends Seeder
         User::create([
             'name' => 'Admin',
             'username' => 'admin',
-            'password' => '123456',
+            'password' => '@kocopass1',
             'admin' => true,
         ]);
 
         User::create([
             'name' => 'Nga',
-            'username' => 'nga',
+            'username' => 'nguyennga',
             'password' => '123456',
         ]);
 
         User::create([
             'name' => 'Tuyết',
-            'username' => 'tuyet',
+            'username' => 'anhtuyet',
             'password' => '123456',
         ]);
 
         User::create([
             'name' => 'Tâm',
-            'username' => 'tam',
+            'username' => 'huynhuyen',
             'password' => '123456',
         ]);
 
         User::create([
             'name' => 'Thanh',
-            'username' => 'thanh',
+            'username' => 'nguyenthanh',
             'password' => '123456',
         ]);
 
         User::create([
             'name' => 'Thịnh',
-            'username' => 'thinh',
+            'username' => 'truongthinh',
             'password' => '123456',
         ]);
 
         User::create([
             'name' => 'Duyên',
-            'username' => 'duyen',
+            'username' => 'myduyen',
             'password' => '123456',
         ]);
 
         User::create([
             'name' => 'Phúc',
-            'username' => 'phuc',
+            'username' => 'nguyenlinh',
             'password' => '123456',
         ]);
 
         User::create([
             'name' => 'Chi',
-            'username' => 'chi',
+            'username' => 'trucchi',
             'password' => '123456',
         ]);
 
         User::create([
             'name' => 'Vương',
             'username' => 'vuong',
+            'password' => '123456',
+        ]);
+
+        User::create([
+            'name' => 'Lý Hải',
+            'username' => 'lyhai',
+            'password' => '123456',
+        ]);
+
+        User::create([
+            'name' => 'Phương',
+            'username' => 'hoangphuong',
+            'password' => '123456',
+        ]);
+
+        User::create([
+            'name' => 'Nàng Kiều',
+            'username' => 'nangkieu',
+            'password' => '123456',
+        ]);
+
+        User::create([
+            'name' => 'Lê Bình',
+            'username' => 'lebinh',
             'password' => '123456',
         ]);
     }
