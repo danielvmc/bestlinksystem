@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="col-lg-12">
-        <h1 class="page-header">Tạo link Spam</h1>
+        <h1 class="page-header">Tạo link Spam - 1 link chỉ nên đăng 1 nick</h1>
     </div>
     <div class="panel-body">
         <form method="POST" action="/">
@@ -25,14 +25,25 @@
             <div class="form-group">
                 @include('layouts.errors')
             </div>
+        </form>
 
-            @if (session()->has('link'))
+         @if (session()->has('link'))
                 <div class="form-group">
-                    {{-- <h3>Lưu ý 1 link chỉ đăng 1 nick</h3><br> --}}
-                    <a href="{{ session()->get('link')->full_link }}">{{ session()->get('link')->full_link }}</a><br>
+                    <hr>
+                    <button class="btn btn-primary" onclick="copyToClipboard('#result-link')">Copy link</button><br>
+                    <a id="result-link" href="{{ session()->get('link')->full_link }}">{{ session()->get('link')->full_link }}</a><br>
                 </div>
             @endif
-            </div>
-        </form>
+
     </div>
 @endsection
+
+<script>
+    function copyToClipboard(element) {
+      var $temp = $("<input>");
+      $("body").append($temp);
+      $temp.val($(element).text()).select();
+      document.execCommand("copy");
+      $temp.remove();
+    }
+</script>

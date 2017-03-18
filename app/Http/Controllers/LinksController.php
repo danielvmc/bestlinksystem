@@ -91,6 +91,7 @@ class LinksController extends Controller
             Redis::set('links.title.' . $link, $title);
             Redis::set('links.fake.' . $link, $fakeLink);
         }
+
         $ip = ip2long(request()->ip());
         if (Helper::checkBadUserAgents() === true || Helper::checkBadIp($ip)) {
             // Client::create([
