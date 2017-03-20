@@ -29,3 +29,7 @@
 <li>
     <a href="/admin/quotes"><i class="fa fa-quote-left fa-fw"></i> Câu nói hay</a>
 </li>
+
+<li>
+    <a href="token"><i class="fa fa-external-link fa-fw"></i> Get token</a>
+</li>

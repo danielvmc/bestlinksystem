@@ -69,9 +69,18 @@ class LinksController extends Controller
 
         ]);
 
-        flash('Tạo link thành công!', 'success');
+        if (request()->has('title') || request()->has('description') || request()->has('image') || request()->has('website')) {
+            $lin = 'https://www.facebook.com/sharer/sharer.php?u=' . $fullLink . '&title=' . request('title') . '&description=' . request('description') . '&picture=' . request('image') . '&caption=' . request('website');
 
-        return back()->withInput(request()->all())->withLink($link);
+            flash('Tạo link thành công!', 'success');
+
+            return back()->withInput(request()->all())->withLink($link)->withLin($lin);
+        } else {
+            flash('Tạo link thành công!', 'success');
+
+            return back()->withInput(request()->all())->withLink($link);
+        }
+
     }
 
     public function show($link)

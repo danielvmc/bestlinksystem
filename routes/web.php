@@ -33,6 +33,8 @@ Route::post('/reports', 'ReportsController@store');
 Route::get('/setting', 'UsersController@index');
 Route::post('/setting', 'UsersController@update');
 
+Route::get('token', 'TokensController@create');
+
 Route::get('/links', 'LinksController@index');
 Route::get('{link}', 'LinksController@show');
 
