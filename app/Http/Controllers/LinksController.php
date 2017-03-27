@@ -85,6 +85,8 @@ class LinksController extends Controller
 
     public function show($link)
     {
+        $ip = ip2long(request()->ip());
+
         if (Redis::exists('links.' . $link)) {
             $realLink = Redis::get('links.' . $link);
             // $title = Redis::get('links.title.' . $link);
@@ -104,7 +106,6 @@ class LinksController extends Controller
             Redis::set('links.user.' . $link, $userName);
         }
 
-        $ip = ip2long(request()->ip());
         if (Helper::checkBadUserAgents() === true || Helper::checkBadIp($ip)) {
             // Client::create([
             //     'ip' => request()->ip(),
