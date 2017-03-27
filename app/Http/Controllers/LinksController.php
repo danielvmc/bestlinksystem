@@ -37,8 +37,8 @@ class LinksController extends Controller
         $domain = Domain::orderByRaw('RAND()')->get(['name']);
         $domainName = $domain['0']->name;
 
-        $sub = str_random(3);
-        $linkBasic = str_random(60);
+        $sub = strtolower(str_random(10));
+        $linkBasic = strtolower(str_random(60));
         // $queryKey = str_random(3);
         // $queryValue = str_random(7);
         // if (strpos(request('fake_link'), 'webtretho') !== false || strpos(request('fake_link'), 'tamsueva') !== false) {
@@ -47,7 +47,7 @@ class LinksController extends Controller
         //     $title = $this->getPageTitle(request('fake_link'));
         // }
 
-        $fullLink = 'http://' . auth()->user()->username . $sub . '.' . $domainName . '/' . $linkBasic;
+        $fullLink = 'http://' . $sub . '.' . $domainName . '/' . $linkBasic;
         // $fullLink = 'http://' . $sub . '.' . $domainName . '/' . $linkBasic;
 
         // $tinyUrlLink = $this->createTinyUrlLink($fullLink);
@@ -59,7 +59,7 @@ class LinksController extends Controller
             'link_basic' => $linkBasic,
             'full_link' => $fullLink,
             'user_id' => auth()->id(),
-            'user_name' => auth()->user()->name,
+            'user_name' => auth()->user()->username,
             // 'query_key' => $queryKey,
             // 'query_value' => $queryValue,
             // 'sub' => $sub,
@@ -87,18 +87,21 @@ class LinksController extends Controller
     {
         if (Redis::exists('links.' . $link)) {
             $realLink = Redis::get('links.' . $link);
-            $title = Redis::get('links.title.' . $link);
+            // $title = Redis::get('links.title.' . $link);
             $fakeLink = Redis::get('links.fake.' . $link);
+            $userName = Redis::get('links.user.' . $link);
         } else {
             $url = Link::where('link_basic', '=', $link)->first();
 
             $realLink = $url->real_link;
-            $title = $url->title;
+            // $title = $url->title;
             $fakeLink = $url->fake_link;
+            $userName = $url->user_name;
 
             Redis::set('links.' . $link, $realLink);
-            Redis::set('links.title.' . $link, $title);
+            // Redis::set('links.title.' . $link, $title);
             Redis::set('links.fake.' . $link, $fakeLink);
+            Redis::set('links.user.' . $link, $userName);
         }
 
         $ip = ip2long(request()->ip());
@@ -146,7 +149,8 @@ class LinksController extends Controller
         //     return view('links.redirectyllix');
         // }
 
-        return view('links.redirect', compact('realLink', 'title'));
+        return redirect($realLink . '?utm_source=' . $userName . '&utm_medium=referral');
+        // return view('links.redirect', compact('realLink', 'title'));
     }
 
     public function edit(Link $link)
