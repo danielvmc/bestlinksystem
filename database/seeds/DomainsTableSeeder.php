@@ -15,6 +15,10 @@ class DomainsTableSeeder extends Seeder
         Domain::truncate();
 
         Domain::create([
+            'name' => 'phucurl.info',
+        ]);
+
+        Domain::create([
             'name' => 'bantrevacuocsong.info',
         ]);
 

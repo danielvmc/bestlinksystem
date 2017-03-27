@@ -46,12 +46,6 @@ class UsersTableSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'Thịnh',
-            'username' => 'truongthinh',
-            'password' => '123456',
-        ]);
-
-        User::create([
             'name' => 'Duyên',
             'username' => 'myduyen',
             'password' => '123456',
@@ -95,7 +89,7 @@ class UsersTableSeeder extends Seeder
 
         User::create([
             'name' => 'Lê Bình',
-            'username' => 'lebinh',
+            'username' => 'levbinh',
             'password' => '123456',
         ]);
     }
