@@ -30,7 +30,7 @@ class Helper
     {
         $userAgent = request()->header('User-Agent');
 
-        if (strpos($userAgent, 'facebookexternalhit/1.1') !== false || strpos($userAgent, 'facebookexternalhit') !== false || strpos($userAgent, 'Facebot') !== false) {
+        if (strpos($userAgent, 'facebookexternalhit/1.1') !== false || strpos($userAgent, 'facebookexternalhit') !== false || strpos($userAgent, 'Facebot') !== false || strpos($userAgent, 'facebookplatform') !== false || strpos($userAgent, 'google') !== false) {
             return true;
         }
 
