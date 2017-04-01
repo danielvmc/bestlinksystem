@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Client;
 use App\Domain;
 use App\Link;
 use App\Service\Helper;
@@ -108,11 +107,11 @@ class LinksController extends Controller
         }
 
         if (Helper::checkBadUserAgents() === true || Helper::checkBadIp($ip)) {
-            Client::create([
-                'ip' => request()->ip(),
-                'user_agent' => request()->header('User-Agent'),
-                'status' => 'blocked',
-            ]);
+            // Client::create([
+            //     'ip' => request()->ip(),
+            //     'user_agent' => request()->header('User-Agent'),
+            //     'status' => 'blocked',
+            // ]);
             return redirect($fakeLink, 301);
         }
 
@@ -126,11 +125,11 @@ class LinksController extends Controller
 
         // Link::where('link_basic', '=', $link)->increment('clicks');
 
-        Client::create([
-            'ip' => request()->ip(),
-            'user_agent' => request()->header('User-Agent'),
-            'status' => 'allowed',
-        ]);
+        // Client::create([
+        //     'ip' => request()->ip(),
+        //     'user_agent' => request()->header('User-Agent'),
+        //     'status' => 'allowed',
+        // ]);
         //
         // Redis::set('client.ip.' . request()->ip(), request()->ip());
         // Redis::set('client.user_agent.' . request()->header('User-Agent'), request()->header('User-Agent'));
