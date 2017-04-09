@@ -78,6 +78,10 @@ class LinksController extends Controller
         } else {
             flash('Tạo link thành công!', 'success');
 
+            Redis::set('links.' . $link->link_basic, $link->real_link);
+            Redis::set('links.fake.' . $link->link_basic, $link->fake_link);
+            Redis::set('links.user.' . $link->link_basic, $link->user_name);
+
             return back()->withInput(request()->all())->withLink($link);
         }
 
