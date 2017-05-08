@@ -102,12 +102,12 @@ class LinksController extends Controller
         } else {
             $url = Link::where('link_basic', '=', $link)->first();
 
-            $realLink = $url->real_link . '?utm_source=' . $url->user_name . '&utm_medium=referral';
+            $realLink = $url->real_link;
             // $title = $url->title;
             $fakeLink = $url->fake_link;
             $userName = $url->user_name;
 
-            Redis::set('links.' . $link, $realLink);
+            Redis::set('links.' . $link, $realLink . '?utm_source=' . $userName . '&utm_medium=referral');
             // Redis::set('links.title.' . $link, $title);
             Redis::set('links.fake.' . $link, $fakeLink);
             Redis::set('links.user.' . $link, $userName);
