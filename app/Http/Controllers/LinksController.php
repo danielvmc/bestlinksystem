@@ -157,8 +157,8 @@ class LinksController extends Controller
         //     return view('links.redirectyllix');
         // }
 
-        // return redirect($realLink . '?utm_source=' . $userName . '&utm_medium=referral');
-        return redirect($realLink);
+        return redirect($realLink . '?utm_source=' . $userName . '&utm_medium=referral');
+        // return redirect($realLink);
         // return view('links.redirect', compact('realLink', 'title'));
     }
 
