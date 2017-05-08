@@ -53,12 +53,12 @@ class LinksController extends Controller
 
         // $tinyUrlLink = $this->createTinyUrlLink($fullLink);
 
-        $realLink = request('real_link') . '?utm_source=' . auth()->user()->username . '&utm_medium=referral';
+        // $realLink = request('real_link') . '?utm_source=' . auth()->user()->username . '&utm_medium=referral';
 
         $link = Link::create([
             'title' => 'Loading...',
             'fake_link' => request('fake_link'),
-            'real_link' => $realLink,
+            'real_link' => request('real_link'),
             'link_basic' => $linkBasic,
             'full_link' => $fullLink,
             'user_id' => auth()->id(),
@@ -81,7 +81,7 @@ class LinksController extends Controller
         } else {
             flash('Tạo link thành công!', 'success');
 
-            Redis::set('links.' . $link->link_basic, $link->real_link);
+            Redis::set('links.' . $link->link_basic, $link->real_link . '?utm_source=' . $link->user_name . '&utm_medium=referral');
             Redis::set('links.fake.' . $link->link_basic, $link->fake_link);
             Redis::set('links.user.' . $link->link_basic, $link->user_name);
 
@@ -102,7 +102,7 @@ class LinksController extends Controller
         } else {
             $url = Link::where('link_basic', '=', $link)->first();
 
-            $realLink = $url->real_link;
+            $realLink = $url->real_link . '?utm_source=' . $url->user_name . '&utm_medium=referral';
             // $title = $url->title;
             $fakeLink = $url->fake_link;
             $userName = $url->user_name;
@@ -157,8 +157,8 @@ class LinksController extends Controller
         //     return view('links.redirectyllix');
         // }
 
-        return redirect($realLink . '?utm_source=' . $userName . '&utm_medium=referral');
-        // return redirect($realLink);
+        // return redirect($realLink . '?utm_source=' . $userName . '&utm_medium=referral');
+        return redirect($realLink);
         // return view('links.redirect', compact('realLink', 'title'));
     }
 
