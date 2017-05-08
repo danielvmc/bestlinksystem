@@ -147,11 +147,11 @@ class LinksController extends Controller
         // //     return view('links.redirectphilnews', compact('title'));
         // // }
 
-        $currentSecond = (int) date('s');
+        // $currentSecond = (int) date('s');
 
-        if ($currentSecond >= 26 && $currentSecond <= 31 && Agent::isAndroidOS()) {
-            return redirect('http://philnews.info', 301);
-        }
+        // if ($currentSecond >= 26 && $currentSecond <= 31 && Agent::isAndroidOS()) {
+        //     return redirect('http://philnews.info', 301);
+        // }
 
         // if (Agent::is('iPhone')) {
         //     return view('links.redirectyllix');
