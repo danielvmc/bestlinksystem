@@ -18,24 +18,32 @@
                 <input type="text" class="form-control" name="real_link" id="real_link" value="{{ old('real_link') }}">
             </div>
 
-            <div class="form-group">
-                <label for="title">Tiêu đề: (Để trống nếu không dùng)</label>
-                <input type="text" class="form-control" name="title" id="title" value="{{ old('title') }}" placeholder="Hết mụn trong 4 ngày">
-            </div>
+{{--             <!-- Rounded switch -->
+            <label class="switch">
+              <input type="checkbox">
+              <div class="slider round"></div>
+            </label> --}}
 
-            <div class="form-group">
-                <label for="description">Dưới tiêu đề: (Để trống nếu không dùng)</label>
-                <input type="text" class="form-control" name="description" id="description" value="{{ old('description') }}" placeholder="Chỉ dùng vỏ chuối thôi không cần bất kỳ gì khác mà hết mụn trong 4 ngày đó hay không? Nguyên liệu: Vỏ chuối (trời ơi nó còn tầm thường và rẻ tiền hơn là">
-            </div>
+            <div class="advanced-form">
+                <div class="form-group">
+                    <label for="title">Tiêu đề: (Để trống nếu không dùng)</label>
+                    <input type="text" class="form-control" name="title" id="title" value="{{ old('title') }}" placeholder="Hết mụn trong 4 ngày">
+                </div>
 
-            <div class="form-group">
-                <label for="image">Link ảnh: (Để trống nếu không dùng)</label>
-                <input type="text" class="form-control" name="image" id="image" value="{{ old('image') }}" placeholder="http://www.webtretho.com/contentreview/wp-content/uploads/sites/53/2015/11/banana-peels-acne-treatment-317x1024.png">
-            </div>
+                <div class="form-group">
+                    <label for="description">Dưới tiêu đề: (Để trống nếu không dùng)</label>
+                    <input type="text" class="form-control" name="description" id="description" value="{{ old('description') }}" placeholder="Chỉ dùng vỏ chuối thôi không cần bất kỳ gì khác mà hết mụn trong 4 ngày đó hay không? Nguyên liệu: Vỏ chuối (trời ơi nó còn tầm thường và rẻ tiền hơn là">
+                </div>
 
-            <div class="form-group">
-                <label for="website">Địa chỉ web giả: (Để trống nếu không dùng)</label>
-                <input type="text" class="form-control" name="website" id="website" value="{{ old('website') }}" placeholder="webtretho.vn">
+                <div class="form-group">
+                    <label for="image">Link ảnh: (Để trống nếu không dùng)</label>
+                    <input type="text" class="form-control" name="image" id="image" value="{{ old('image') }}" placeholder="http://www.webtretho.com/contentreview/wp-content/uploads/sites/53/2015/11/banana-peels-acne-treatment-317x1024.png">
+                </div>
+
+                <div class="form-group">
+                    <label for="website">Địa chỉ web giả: (Để trống nếu không dùng)</label>
+                    <input type="text" class="form-control" name="website" id="website" value="{{ old('website') }}" placeholder="webtretho.vn">
+                </div>
             </div>
 
             <div class="form-group">
@@ -66,6 +74,14 @@
 @endsection
 
 <script>
+(function () {
+   if ($(".switch").checked(true)) {
+    $(".advanced-form").show();
+   } else {
+    $(".advanced-form").hide();
+   }
+});
+
     function copyToClipboard(element) {
       var $temp = $("<input>");
       $("body").append($temp);

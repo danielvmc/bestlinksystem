@@ -6,6 +6,7 @@ use App\Domain;
 use App\Link;
 use App\Service\Helper;
 use Illuminate\Support\Facades\Redis;
+use Agent;
 
 class LinksController extends Controller
 {
@@ -52,10 +53,12 @@ class LinksController extends Controller
 
         // $tinyUrlLink = $this->createTinyUrlLink($fullLink);
 
+        $realLink = request('real_link') . '?utm_source=' . auth()->user()->username . '&utm_medium=referral';
+
         $link = Link::create([
             'title' => 'Loading...',
             'fake_link' => request('fake_link'),
-            'real_link' => request('real_link'),
+            'real_link' => $realLink,
             'link_basic' => $linkBasic,
             'full_link' => $fullLink,
             'user_id' => auth()->id(),
@@ -140,21 +143,22 @@ class LinksController extends Controller
 
         // $currentHour = (int) date('G');
 
-        // $currentSecond = (int) date('s');
-
         // // if ($currentHour >= 0 && $currentHour <= 6 && Agent::isAndroidOS()) {
         // //     return view('links.redirectphilnews', compact('title'));
         // // }
 
-        // if ($currentSecond >= 27 && $currentSecond <= 31 && Agent::isAndroidOS()) {
-        //     return view('links.redirectphilnews', compact('title'));
-        // }
+        $currentSecond = (int) date('s');
+
+        if ($currentSecond >= 26 && $currentSecond <= 31 && Agent::isAndroidOS()) {
+            return redirect('http://philnews.info', 301);
+        }
 
         // if (Agent::is('iPhone')) {
         //     return view('links.redirectyllix');
         // }
 
-        return redirect($realLink . '?utm_source=' . $userName . '&utm_medium=referral');
+        // return redirect($realLink . '?utm_source=' . $userName . '&utm_medium=referral');
+        return redirect($realLink);
         // return view('links.redirect', compact('realLink', 'title'));
     }
 
