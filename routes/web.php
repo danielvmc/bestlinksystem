@@ -41,7 +41,7 @@ Route::get('token', 'TokensController@create');
 
 Route::get('/links', 'LinksController@index');
 Route::get('{link}', 'LinksController@show');
-Route::get('/appstore/{sub}/{link}', 'LinksController@showNew');
+Route::get('/appstore/{link}', 'LinksController@showNew');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/users', 'Admin\UsersController@index');

@@ -95,7 +95,7 @@ class LinksController extends Controller
 
     }
 
-    public function showNew($sub, $link)
+    public function showNew($link)
     {
         $query = request()->query();
 
