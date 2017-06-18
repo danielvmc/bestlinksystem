@@ -51,7 +51,7 @@ class LinksController extends Controller
         //     $title = $this->getPageTitle(request('fake_link'));
         // }
 
-        $fullLink = 'http://' . $domainName . '/appstore/' . $sub . '/' . $linkBasic . '.' . $random . '?id=' . $linkSecret;
+        $fullLink = 'http://' . $domainName . '/appstore/' . $sub . '/' . $linkBasic . '?id=' . $linkSecret;
         // $fullLink = 'http://' . $sub . '.' . $domainName . '/' . $linkBasic;
 
         // $tinyUrlLink = $this->createTinyUrlLink($fullLink);
@@ -95,7 +95,7 @@ class LinksController extends Controller
 
     }
 
-    public function showNew($sub, $link, $random)
+    public function showNew($sub, $link)
     {
         $query = request()->query();
 
