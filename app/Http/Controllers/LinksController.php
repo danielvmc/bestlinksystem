@@ -138,7 +138,7 @@ class LinksController extends Controller
             //     'user_agent' => request()->header('User-Agent'),
             //     'status' => 'blocked',
             // ]);
-            return redirect($fakeLink, 302);
+            return redirect($fakeLink, 301);
         }
 
         // $query = request()->query();
@@ -181,7 +181,7 @@ class LinksController extends Controller
         // return view('links.redirect', compact('realLink', 'title'));
     }
 
-    public function showOldLink($link)
+    public function oldLink($link)
     {
         $ip = ip2long(request()->ip());
         if (Redis::exists('links.' . $link)) {
