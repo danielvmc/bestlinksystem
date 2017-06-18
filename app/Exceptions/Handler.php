@@ -45,9 +45,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        // if ($exception instanceof NotFoundHttpException) {
-        //     return redirect('http://www.amazingvideos.mobi/?sl=1887130-2e95b&data1=Track1&data2=Track2');
-        // }
+        if ($exception instanceof NotFoundHttpException) {
+            return view('nothing');
+        }
 
         return parent::render($request, $exception);
     }

@@ -16,7 +16,7 @@ Route::post('/secret-login', 'SessionsController@store');
 Route::get('/secret-logout', 'SessionsController@destroy');
 
 Route::get('/', function () {
-    return redirect('http://www.manutd.com/');
+    return view('nothing');
 });
 
 Route::get('/create-link', 'LinksController@create')->name('home');
