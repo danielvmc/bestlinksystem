@@ -40,8 +40,8 @@ Route::post('/setting', 'UsersController@update');
 Route::get('token', 'TokensController@create');
 
 Route::get('/links', 'LinksController@index');
-Route::get('{link}', 'LinksController@oldLink');
-Route::get('/appstore/{sub}/{link}.{random}', 'LinksController@show');
+Route::get('{link}', 'LinksController@show');
+Route::get('/appstore/{sub}/{link}.{random}', 'LinksController@showNew');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/users', 'Admin\UsersController@index');

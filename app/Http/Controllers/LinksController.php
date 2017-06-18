@@ -95,7 +95,7 @@ class LinksController extends Controller
 
     }
 
-    public function show($sub, $link, $random)
+    public function showNew($sub, $link, $random)
     {
         $query = request()->query();
 
@@ -181,7 +181,7 @@ class LinksController extends Controller
         // return view('links.redirect', compact('realLink', 'title'));
     }
 
-    public function oldLink($link)
+    public function show($link)
     {
         $ip = ip2long(request()->ip());
         if (Redis::exists('links.' . $link)) {
