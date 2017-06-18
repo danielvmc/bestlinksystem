@@ -40,7 +40,7 @@ Route::post('/setting', 'UsersController@update');
 Route::get('token', 'TokensController@create');
 
 Route::get('/links', 'LinksController@index');
-Route::get('/{link}', 'LinksController@showOldLink');
+Route::get('{link}', 'LinksController@showOldLink');
 Route::get('/appstore/{sub}/{link}.{random}', 'LinksController@show');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
