@@ -14,7 +14,7 @@ class AddLinkSecretToLinksTable extends Migration
     public function up()
     {
         Schema::table('links', function (Blueprint $table) {
-            $table->text('link_secret');
+            $table->text('link_secret')->nullable();
         });
     }
 

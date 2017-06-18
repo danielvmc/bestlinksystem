@@ -5,7 +5,7 @@
         <h1 class="page-header">Tạo link Spam - 1 link chỉ nên đăng 1 nick</h1>
     </div>
     <div class="panel-body">
-        <form method="POST" action="/home">
+        <form method="POST" action="/create-link">
             {{ csrf_field() }}
 
             <div class="form-group">

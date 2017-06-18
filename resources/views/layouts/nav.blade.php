@@ -37,7 +37,7 @@
                     <ul class="nav" id="side-menu">
 
                         <li>
-                            <a href="/home"><i class="fa fa-edit fa-fw"></i> Tạo Link Spam</a>
+                            <a href="/create-link"><i class="fa fa-edit fa-fw"></i> Tạo Link Spam</a>
                         </li>
 {{--                         <li>
                             <a href="/link-ad"><i class="fa fa-youtube fa-fw"></i> Tạo Link Ad</a>

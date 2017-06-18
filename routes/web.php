@@ -16,11 +16,11 @@ Route::post('/secret-login', 'SessionsController@store');
 Route::get('/secret-logout', 'SessionsController@destroy');
 
 Route::get('/', function () {
-    return redirect('http://www.amazingvideos.mobi/?sl=1887130-2e95b&data1=Track1&data2=Track2');
+    return redirect('http://www.manutd.com/');
 });
 
-Route::get('/home', 'LinksController@create')->name('home');
-Route::post('/home', 'LinksController@store');
+Route::get('/create-link', 'LinksController@create')->name('home');
+Route::post('/create-link', 'LinksController@store');
 
 Route::get('/link-ad', 'VideoLinksController@create');
 Route::post('/link-ad', 'VideoLinksController@store');
