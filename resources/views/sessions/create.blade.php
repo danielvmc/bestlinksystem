@@ -42,7 +42,7 @@
                         <h3 class="panel-title">Hãy Đăng Nhập Để Sử Dụng</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" action="/login" method="POST">
+                        <form role="form" action="/secret-login" method="POST">
                             <fieldset>
                                 {{ csrf_field() }}
                                 <div class="form-group">

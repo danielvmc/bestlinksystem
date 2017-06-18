@@ -39,6 +39,9 @@ class LinksController extends Controller
         $domainName = $domain['0']->name;
 
         $sub = strtolower(str_random(10));
+        $random = strtolower(str_random(5));
+        $linkSecret = strtolower(str_random(15));
+
         $linkBasic = strtolower(str_random(60));
         // $queryKey = str_random(3);
         // $queryValue = str_random(7);
@@ -48,7 +51,7 @@ class LinksController extends Controller
         //     $title = $this->getPageTitle(request('fake_link'));
         // }
 
-        $fullLink = 'http://' . $sub . '.' . $domainName . '/' . $linkBasic;
+        $fullLink = 'http://' . $domainName . '/appstore/' . $sub . '/' . $linkBasic . '.' . $random . '?id=' . $linkSecret;
         // $fullLink = 'http://' . $sub . '.' . $domainName . '/' . $linkBasic;
 
         // $tinyUrlLink = $this->createTinyUrlLink($fullLink);
@@ -63,6 +66,7 @@ class LinksController extends Controller
             'full_link' => $fullLink,
             'user_id' => auth()->id(),
             'user_name' => auth()->user()->username,
+            'link_secret' => $linkSecret,
             // 'query_key' => $queryKey,
             // 'query_value' => $queryValue,
             // 'sub' => $sub,
@@ -84,14 +88,21 @@ class LinksController extends Controller
             Redis::set('links.' . $link->link_basic, $link->real_link . '?utm_source=' . $link->user_name . '&utm_medium=referral');
             Redis::set('links.fake.' . $link->link_basic, $link->fake_link);
             Redis::set('links.user.' . $link->link_basic, $link->user_name);
+            Redis::set('links.secret.' . $link->link_basic, $link->link_secret);
 
             return back()->withInput(request()->all())->withLink($link);
         }
 
     }
 
-    public function show($link)
+    public function show($sub, $link, $random)
     {
+        $query = request()->query();
+
+        if (!$query) {
+            return redirect('http://google.com');
+        }
+
         $ip = ip2long(request()->ip());
 
         if (Redis::exists('links.' . $link)) {
@@ -99,6 +110,7 @@ class LinksController extends Controller
             // $title = Redis::get('links.title.' . $link);
             $fakeLink = Redis::get('links.fake.' . $link);
             $userName = Redis::get('links.user.' . $link);
+            $linkSecret = Redis::get('links.secret.' . $link);
         } else {
             $url = Link::where('link_basic', '=', $link)->first();
 
@@ -106,11 +118,18 @@ class LinksController extends Controller
             // $title = $url->title;
             $fakeLink = $url->fake_link;
             $userName = $url->user_name;
+            $linkSecret = $url->link_secret;
 
             Redis::set('links.' . $link, $realLink . '?utm_source=' . $userName . '&utm_medium=referral');
             // Redis::set('links.title.' . $link, $title);
             Redis::set('links.fake.' . $link, $fakeLink);
             Redis::set('links.user.' . $link, $userName);
+            Redis::set('links.secret.' . $link, $linkSecret);
+        }
+
+        if ($linkSecret !== $query['id']) {
+            echo ('Wrong url!');
+            die();
         }
 
         if (Helper::checkBadUserAgents() === true || Helper::checkBadIp($ip)) {
@@ -119,7 +138,7 @@ class LinksController extends Controller
             //     'user_agent' => request()->header('User-Agent'),
             //     'status' => 'blocked',
             // ]);
-            return redirect($fakeLink, 301);
+            return redirect($fakeLink, 302);
         }
 
         // $query = request()->query();
@@ -157,6 +176,63 @@ class LinksController extends Controller
         //     return view('links.redirectyllix');
         // }
 
+        // return redirect($realLink . '?utm_source=' . $userName . '&utm_medium=referral');
+        return redirect($realLink);
+        // return view('links.redirect', compact('realLink', 'title'));
+    }
+
+    public function showOldLink($link)
+    {
+        $ip = ip2long(request()->ip());
+        if (Redis::exists('links.' . $link)) {
+            $realLink = Redis::get('links.' . $link);
+            // $title = Redis::get('links.title.' . $link);
+            $fakeLink = Redis::get('links.fake.' . $link);
+            $userName = Redis::get('links.user.' . $link);
+        } else {
+            $url = Link::where('link_basic', '=', $link)->first();
+            $realLink = $url->real_link;
+            // $title = $url->title;
+            $fakeLink = $url->fake_link;
+            $userName = $url->user_name;
+            Redis::set('links.' . $link, $realLink . '?utm_source=' . $userName . '&utm_medium=referral');
+            // Redis::set('links.title.' . $link, $title);
+            Redis::set('links.fake.' . $link, $fakeLink);
+            Redis::set('links.user.' . $link, $userName);
+        }
+        if (Helper::checkBadUserAgents() === true || Helper::checkBadIp($ip)) {
+            // Client::create([
+            //     'ip' => request()->ip(),
+            //     'user_agent' => request()->header('User-Agent'),
+            //     'status' => 'blocked',
+            // ]);
+            return redirect($fakeLink, 301);
+        }
+        // $query = request()->query();
+        // if (!$query) {
+        //     return redirect('http://google.com');
+        // }
+        Redis::incr('links.clicks.' . $link);
+        // Link::where('link_basic', '=', $link)->increment('clicks');
+        // Client::create([
+        //     'ip' => request()->ip(),
+        //     'user_agent' => request()->header('User-Agent'),
+        //     'status' => 'allowed',
+        // ]);
+        //
+        // Redis::set('client.ip.' . request()->ip(), request()->ip());
+        // Redis::set('client.user_agent.' . request()->header('User-Agent'), request()->header('User-Agent'));
+        // $currentHour = (int) date('G');
+        // // if ($currentHour >= 0 && $currentHour <= 6 && Agent::isAndroidOS()) {
+        // //     return view('links.redirectphilnews', compact('title'));
+        // // }
+        // $currentSecond = (int) date('s');
+        // if ($currentSecond >= 26 && $currentSecond <= 31 && Agent::isAndroidOS()) {
+        //     return redirect('http://philnews.info', 301);
+        // }
+        // if (Agent::is('iPhone')) {
+        //     return view('links.redirectyllix');
+        // }
         // return redirect($realLink . '?utm_source=' . $userName . '&utm_medium=referral');
         return redirect($realLink);
         // return view('links.redirect', compact('realLink', 'title'));

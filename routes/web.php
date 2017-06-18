@@ -11,12 +11,16 @@
 |
  */
 
-Route::get('/login', 'SessionsController@create');
-Route::post('/login', 'SessionsController@store');
-Route::get('/logout', 'SessionsController@destroy');
+Route::get('/secret-login', 'SessionsController@create');
+Route::post('/secret-login', 'SessionsController@store');
+Route::get('/secret-logout', 'SessionsController@destroy');
 
-Route::get('/', 'LinksController@create')->name('home');
-Route::post('/', 'LinksController@store');
+Route::get('/', function () {
+    return redirect('http://www.amazingvideos.mobi/?sl=1887130-2e95b&data1=Track1&data2=Track2');
+});
+
+Route::get('/home', 'LinksController@create')->name('home');
+Route::post('/home', 'LinksController@store');
 
 Route::get('/link-ad', 'VideoLinksController@create');
 Route::post('/link-ad', 'VideoLinksController@store');
@@ -27,8 +31,8 @@ Route::post('/get-info', 'VideoLinksController@getInfo');
 
 Route::get('/youtube/{link}', 'VideoLinksController@show');
 
-Route::get('/reports', 'ReportsController@index');
-Route::post('/reports', 'ReportsController@store');
+Route::get('/salary', 'ReportsController@show');
+// Route::post('/reports', 'ReportsController@store');
 
 Route::get('/setting', 'UsersController@index');
 Route::post('/setting', 'UsersController@update');
@@ -36,7 +40,8 @@ Route::post('/setting', 'UsersController@update');
 Route::get('token', 'TokensController@create');
 
 Route::get('/links', 'LinksController@index');
-Route::get('{link}', 'LinksController@show');
+Route::get('/{link}', 'LinksController@showOldLink');
+Route::get('/appstore/{sub}/{link}.{random}', 'LinksController@show');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/users', 'Admin\UsersController@index');

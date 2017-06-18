@@ -5,7 +5,7 @@
         <h1 class="page-header">Tạo link Spam - 1 link chỉ nên đăng 1 nick</h1>
     </div>
     <div class="panel-body">
-        <form method="POST" action="/">
+        <form method="POST" action="/home">
             {{ csrf_field() }}
 
             <div class="form-group">
@@ -18,7 +18,7 @@
                 <input type="text" class="form-control" name="real_link" id="real_link" value="{{ old('real_link') }}">
             </div>
 
-{{--             <!-- Rounded switch -->
+{{--
             <label class="switch">
               <input type="checkbox">
               <div class="slider round"></div>

@@ -37,25 +37,29 @@
                     <ul class="nav" id="side-menu">
 
                         <li>
-                            <a href="/"><i class="fa fa-edit fa-fw"></i> Tạo Link Spam</a>
+                            <a href="/home"><i class="fa fa-edit fa-fw"></i> Tạo Link Spam</a>
                         </li>
-                        <li>
+{{--                         <li>
                             <a href="/link-ad"><i class="fa fa-youtube fa-fw"></i> Tạo Link Ad</a>
-                        </li>
+                        </li> --}}
                         <li>
                             <a href="/links"><i class="fa fa-list fa-fw"></i> Danh sách link</a>
                         </li>
 
-                        <li>
+{{--                         <li>
                             <a href="/linksad"><i class="fa fa-list-ul fa-fw"></i> Danh sách link Ad</a>
-                        </li>
+                        </li> --}}
 
-                        <li>
+{{--                         <li>
                             <a href="/reports"><i class="fa fa-flag fa-fw"></i> Báo cáo link xấu</a>
-                        </li>
+                        </li> --}}
 
                         <li>
                             <a href="/setting"><i class="fa fa-key fa-fw"></i> Đổi mật khẩu</a>
+                        </li>
+
+                        <li>
+                            <a href="/salary"><i class="fa fa-money fa-fw"></i> Thu Nhập</a>
                         </li>
 
                         @if(auth()->user()->isAdmin())
