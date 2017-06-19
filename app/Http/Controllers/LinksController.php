@@ -12,7 +12,7 @@ class LinksController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['show', 'getInfo']);
+        $this->middleware('auth')->except(['show', 'getInfo', 'showNew']);
     }
 
     public function index()
