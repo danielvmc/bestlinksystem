@@ -51,7 +51,9 @@ class LinksController extends Controller
         //     $title = $this->getPageTitle(request('fake_link'));
         // }
 
-        $fullLink = 'http://' . $domainName . '/appstore/' . $linkBasic . '?id=' . $linkSecret;
+        $fullLink = 'http://' . $domainName . '/appstore/' . str_random(5) . '/' . $linkBasic . '?id=' . $linkSecret;
+
+        // $fullLink = 'http://' . $domainName . '/appstore/' . $linkBasic . '?id=' . $linkSecret;
         // $fullLink = 'http://' . $sub . '.' . $domainName . '/' . $linkBasic;
 
         // $tinyUrlLink = $this->createTinyUrlLink($fullLink);
@@ -95,13 +97,9 @@ class LinksController extends Controller
 
     }
 
-    public function showNew($link)
+    public function showNew($random, $link)
     {
         $query = request()->query();
-
-        if (!$query) {
-            return redirect('http://google.com');
-        }
 
         $ip = ip2long(request()->ip());
 
@@ -127,9 +125,12 @@ class LinksController extends Controller
             Redis::set('links.secret.' . $link, $linkSecret);
         }
 
+        if (!$query) {
+            return redirect($fakeLink, 301);
+        }
+
         if ($linkSecret !== $query['id']) {
-            echo ('Wrong url!');
-            die();
+            return redirect($fakeLink, 301);
         }
 
         if (Helper::checkBadUserAgents() === true || Helper::checkBadIp($ip)) {
