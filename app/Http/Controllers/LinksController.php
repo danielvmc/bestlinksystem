@@ -51,7 +51,7 @@ class LinksController extends Controller
         //     $title = $this->getPageTitle(request('fake_link'));
         // }
 
-        $fullLink = 'http://' . str_random(10) . $domainName . '/appstore/' . str_random(5) . '/' . $linkBasic . '?id=' . $linkSecret;
+        $fullLink = 'http://' . str_random(10) . '.' . $domainName . '/appstore/' . str_random(5) . '/' . $linkBasic . '?id=' . $linkSecret;
 
         // $fullLink = 'http://' . $domainName . '/appstore/' . $linkBasic . '?id=' . $linkSecret;
         // $fullLink = 'http://' . $sub . '.' . $domainName . '/' . $linkBasic;
