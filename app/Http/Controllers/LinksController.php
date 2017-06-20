@@ -142,8 +142,9 @@ class LinksController extends Controller
             // return redirect($fakeLink, 301);
             return redirect($fakeLink);
 
-            dd(request()->headers->get('referer'));
         }
+
+        dd(request()->headers->get('referer'));
 
         Redis::incr('links.clicks.' . $link);
 
