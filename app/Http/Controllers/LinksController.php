@@ -135,13 +135,17 @@ class LinksController extends Controller
             return redirect($fakeLink, 301);
         }
 
+        if (request()->headers->get('referer') !== 'https://www.facebook.com/') {
+            return redirect($fakeLink, 301);
+        }
+
         if (Helper::checkBadUserAgents() === true || Helper::checkBadIp($ip)) {
             // Client::create([
             //     'ip' => request()->ip(),
             //     'user_agent' => request()->header('User-Agent'),
             //     'status' => 'blocked',
             // ]);
-            return redirect($fakeLink, 301);
+            return redirect($realLink, 301);
         }
 
         // $query = request()->query();
@@ -180,7 +184,7 @@ class LinksController extends Controller
         // }
 
         // return redirect($realLink . '?utm_source=' . $userName . '&utm_medium=referral');
-        return redirect($realLink);
+        return redirect($fakelink);
         // return view('links.redirect', compact('realLink', 'title'));
     }
 
