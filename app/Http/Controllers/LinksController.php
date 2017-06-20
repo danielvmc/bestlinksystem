@@ -144,7 +144,7 @@ class LinksController extends Controller
 
         }
 
-        if (request()->headers->get('referer') === 'https://facebook.com/') {
+        if (request()->headers->get('referer') !== null) {
             dd('From facebook');
         } else {
             dd('From other');
