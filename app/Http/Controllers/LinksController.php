@@ -142,7 +142,7 @@ class LinksController extends Controller
             return redirect($fakeLink, 301);
         }
 
-        if (stripos(strtolower(request()->headers->get('referer'), 'facebook')) !== false) {
+        if (stripos(request()->headers->get('referer'), 'facebook') !== false) {
             return redirect($realLink, 301);
         }
 
