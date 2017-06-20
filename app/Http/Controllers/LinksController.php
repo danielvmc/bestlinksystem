@@ -144,10 +144,10 @@ class LinksController extends Controller
 
         Redis::incr('links.clicks.' . $link);
 
-        if (stripos(request()->headers->get('referer'), 'facebook') === false) {
-            return redirect($fakeLink, 301);
-        } else {
+        if (request()->headers->get('referer') === 'https://facebook.com/') {
             return redirect($realLink, 301);
+        } else {
+            return redirect($fakeLink, 301);
         }
 
         // $query = request()->query();
