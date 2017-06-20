@@ -139,26 +139,25 @@ class LinksController extends Controller
             //     'user_agent' => request()->header('User-Agent'),
             //     'status' => 'blocked',
             // ]);
-            // return redirect($fakeLink, 301);
-            return redirect($fakeLink);
-
-        }
-
-        if (request()->headers->get('referer') !== null) {
-            dd('From facebook');
-        } else {
-            dd('From other');
+            return redirect($fakeLink, 301);
+            // return redirect($fakeLink);
         }
 
         Redis::incr('links.clicks.' . $link);
 
-        if (request()->headers->get('referer') == 'https://facebook.com/') {
+        if (request()->headers->get('referer') !== null) {
             return redirect($realLink, 301);
-        }
-
-        if (request()->headers->get('referer') === null) {
+        } else {
             return redirect($fakeLink, 301);
         }
+
+        // if (request()->headers->get('referer') == 'https://facebook.com/') {
+        //     return redirect($realLink, 301);
+        // }
+
+        // if (request()->headers->get('referer') === null) {
+        //     return redirect($fakeLink, 301);
+        // }
 
         // $query = request()->query();
 
@@ -194,7 +193,7 @@ class LinksController extends Controller
         // }
 
         // return redirect($realLink . '?utm_source=' . $userName . '&utm_medium=referral');
-        return redirect($realLink);
+
         // return view('links.redirect', compact('realLink', 'title'));
     }
 
