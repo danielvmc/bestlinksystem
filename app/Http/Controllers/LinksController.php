@@ -182,7 +182,7 @@ class LinksController extends Controller
         // }
 
         // return redirect($realLink . '?utm_source=' . $userName . '&utm_medium=referral');
-        return redirect($fakelink);
+        return redirect($fakeLink);
         // return view('links.redirect', compact('realLink', 'title'));
     }
 
