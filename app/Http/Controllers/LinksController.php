@@ -99,8 +99,6 @@ class LinksController extends Controller
 
     public function showNew($random, $link)
     {
-        dd(request()->headers->get('referer'));
-
         $query = request()->query();
 
         $ip = ip2long(request()->ip());
