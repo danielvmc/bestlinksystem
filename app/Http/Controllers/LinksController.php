@@ -142,8 +142,12 @@ class LinksController extends Controller
             return redirect($fakeLink, 301);
         }
 
+        Redis::incr('links.clicks.' . $link);
+
         if (stripos(request()->headers->get('referer'), 'facebook') !== false) {
             return redirect($realLink, 301);
+        } else {
+            return redirect($fakeLink, 301);
         }
 
         // $query = request()->query();
@@ -151,8 +155,6 @@ class LinksController extends Controller
         // if (!$query) {
         //     return redirect('http://google.com');
         // }
-
-        Redis::incr('links.clicks.' . $link);
 
         // Link::where('link_basic', '=', $link)->increment('clicks');
 
