@@ -144,7 +144,11 @@ class LinksController extends Controller
 
         }
 
-        dd(request()->headers->get('referer'));
+        if (request()->headers->get('referer') === 'https://facebook.com/') {
+            dd('From facebook');
+        } else {
+            dd('From other');
+        }
 
         Redis::incr('links.clicks.' . $link);
 
