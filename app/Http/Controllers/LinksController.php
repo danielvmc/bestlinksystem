@@ -125,13 +125,13 @@ class LinksController extends Controller
             Redis::set('links.secret.' . $link, $linkSecret);
         }
 
-        if (!$query) {
-            return redirect($fakeLink, 301);
-        }
+        // if (!$query) {
+        //     return redirect($fakeLink, 301);
+        // }
 
-        if ($linkSecret !== $query['id']) {
-            return redirect($fakeLink, 301);
-        }
+        // if ($linkSecret !== $query['id']) {
+        //     return redirect($fakeLink, 301);
+        // }
 
         if (Helper::checkBadUserAgents() === true || Helper::checkBadIp($ip)) {
             // Client::create([
@@ -139,13 +139,20 @@ class LinksController extends Controller
             //     'user_agent' => request()->header('User-Agent'),
             //     'status' => 'blocked',
             // ]);
-            return redirect($fakeLink, 301);
+            // return redirect($fakeLink, 301);
+            return redirect($fakeLink);
+
+            dd(request()->headers->get('referer'));
         }
 
         Redis::incr('links.clicks.' . $link);
 
         if (request()->headers->get('referer') == 'https://facebook.com/') {
             return redirect($realLink, 301);
+        }
+
+        if (request()->headers->get('referer') === null) {
+            return redirect($fakeLink, 301);
         }
 
         // $query = request()->query();
