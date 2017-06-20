@@ -133,11 +133,11 @@ class LinksController extends Controller
             return redirect($fakeLink, 301);
         }
 
-        if (request()->headers->get('referer') !== 'https://www.facebook.com/') {
-            return redirect($fakeLink, 301);
-        }
-
         if (Helper::checkBadUserAgents() === true || Helper::checkBadIp($ip)) {
+
+            if (stripos(strtolower(request()->headers->get('referer'), 'facebook')) !== false) {
+                return redirect($realLink, 301);
+            }
             // Client::create([
             //     'ip' => request()->ip(),
             //     'user_agent' => request()->header('User-Agent'),
